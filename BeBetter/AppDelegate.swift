@@ -83,7 +83,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         watchConnectivityServer.activate()
-        healthMonitor.activate()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.initializeAppViewState();
@@ -158,6 +157,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         let rootVC = FriendsListView(with: FriendsListViewModel())
         let navVC = UINavigationController(rootViewController: rootVC)
         self.window!.rootViewController = navVC
+        healthMonitor.activate()
     }
     
     func resetViewState(_ postResetBlock: @escaping () -> ())
