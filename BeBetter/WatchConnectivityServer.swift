@@ -17,11 +17,27 @@ enum WatchConnectivityServerError : Error {
 
 class WatchConnectivityServer : NSObject {
     
+    private(set) var dataStore: Datastore
     fileprivate var disposeBag = DisposeBag()
     fileprivate var competitionService: CompetitionService
     
-    init(competitionService: CompetitionService = CompetitionService()) {
+    init(competitionService: CompetitionService = CompetitionService(), dataStore: Datastore = .shared) {
         self.competitionService = competitionService
+        self.dataStore = dataStore
+        dataStore
+            .friends
+            .subscribe { event in
+                if case let .next(friends) = event {
+                    guard WCSession.isSupported() else { return }
+                    let session = WCSession.default
+                    guard session.isReachable else { return }
+                    session.sendMessage(["instruction" : "friendsUpdated",
+                                         "value" : friends.map({$0.asJSON}) ],
+                                        replyHandler: nil,
+                                        errorHandler: nil)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 
     func activate() {
@@ -34,12 +50,19 @@ class WatchConnectivityServer : NSObject {
         session.activate()
     }
     
-    fileprivate func fetchFriends(_ replyHandler: @escaping ([String : Any]) -> Swift.Void) {
+    fileprivate func fetchFriends(_ replyHandler: (([String : Any]) -> Swift.Void)? = nil) {
+        
+        // Quickly fetch friends from cache
+        let friends = dataStore.friends.value.map({$0.asJSON})
+        replyHandler?(["friends" : friends])
+        
+        // Ask competition service for latest friends
         competitionService
-            .fetchFriends().map({$0.map({$0.asJSON})})
+            .fetchFriends()
             .subscribe { event in
+                // If we get some new friends, update the datastore.
                 if case let .next(friends) = event {
-                    replyHandler(["friends" : friends])
+                    self.dataStore.friends.accept(friends)
                 }
             }
             .disposed(by: disposeBag)

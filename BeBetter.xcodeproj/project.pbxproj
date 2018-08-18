@@ -36,6 +36,8 @@
 		DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639802122172F00634BCC /* WatchConnectivityServer.swift */; };
 		DE7769602126E21F00D02A3C /* HealthMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77695F2126E21F00D02A3C /* HealthMonitor.swift */; };
 		DE7769622126E31C00D02A3C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7769612126E31C00D02A3C /* HealthKit.framework */; };
+		DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
+		DE7BEEB621285D8F00F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
 		DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */; };
 		DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */; };
 		EBA073DACDB4E5B56ED14725 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EE08CB3C830D8ED186259 /* Pods_WatchApp_Extension.framework */; };
@@ -136,6 +138,7 @@
 		DE3639802122172F00634BCC /* WatchConnectivityServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityServer.swift; sourceTree = "<group>"; };
 		DE77695F2126E21F00D02A3C /* HealthMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMonitor.swift; sourceTree = "<group>"; };
 		DE7769612126E31C00D02A3C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		DE7BEEB42128562900F11D16 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
 		DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,6 +226,7 @@
 		4FD6C4A11B755265002F9F90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE7BEEB32128561500F11D16 /* Datastore */,
 				DE3639822122174300634BCC /* Controllers */,
 				DE36397F2122171B00634BCC /* Services */,
 				DE3639472121B7AD00634BCC /* Models */,
@@ -355,6 +359,14 @@
 				DE77695F2126E21F00D02A3C /* HealthMonitor.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DE7BEEB32128561500F11D16 /* Datastore */ = {
+			isa = PBXGroup;
+			children = (
+				DE7BEEB42128562900F11D16 /* Datastore.swift */,
+			);
+			name = Datastore;
 			sourceTree = "<group>";
 		};
 		DEDD1ABD2125BAEE009C61CF /* Controllers */ = {
@@ -745,6 +757,7 @@
 				DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
+				DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */,
 				DE3639492121B7C800634BCC /* Person.swift in Sources */,
 				DE3639442121B63A00634BCC /* FriendsListViewModel.swift in Sources */,
 				DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */,
@@ -767,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */,
+				DE7BEEB621285D8F00F11D16 /* Datastore.swift in Sources */,
 				DE36397D21220F8200634BCC /* Person.swift in Sources */,
 				DE3639662121C60000634BCC /* NotificationController.swift in Sources */,
 				DE3639642121C60000634BCC /* ExtensionDelegate.swift in Sources */,

@@ -157,6 +157,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         let rootVC = FriendsListView(with: FriendsListViewModel())
         let navVC = UINavigationController(rootViewController: rootVC)
         self.window!.rootViewController = navVC
+        watchConnectivityServer.activate()
         healthMonitor.activate()
     }
     

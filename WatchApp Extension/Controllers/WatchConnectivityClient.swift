@@ -12,14 +12,21 @@ import RxCocoa
 import RxSwift
 import SwiftyJSON
 
+enum WatchConnectivityClientError : Error {
+    case unknownInsturction
+}
+
 class WatchConnectivityClient : NSObject {
     
-    private(set) var friends: BehaviorRelay<[Person]> = BehaviorRelay(value: [])
+    static let shared = WatchConnectivityClient()
+    
+    private(set) var dataStore: Datastore 
     private(set) var isConnected = BehaviorRelay(value: false)
     
     fileprivate var disposeBag = DisposeBag()
     
-    override init() {
+    init(dataStore: Datastore = .shared) {
+        self.dataStore = dataStore
         super.init()
         activate()
     }
@@ -44,14 +51,15 @@ class WatchConnectivityClient : NSObject {
     func fetchFriends() {
         let session = WCSession.default
         if session.isReachable {
-            session.sendMessage(["instruction" : "fetchFriends"],
-                                replyHandler: { reply in
-                                    guard let friendsInfo = reply["friends"] as? [[String : Any]] else {
-                                        return
-                                    }
-                                    let friends = friendsInfo.map({Person(json: JSON($0))})
-                                    self.friends.accept(friends)
-            }, errorHandler: nil)
+            session.sendMessage(["instruction" : "fetchFriends"], replyHandler: { reply in
+                guard let friendsInfo = reply["friends"] as? [[String : Any]] else {
+                    return
+                }
+                let friends = friendsInfo.map({Person(json: JSON($0))})
+                self.dataStore.friends.accept(friends)
+            }, errorHandler: { (error) in
+                print(error)
+            })
         }
     }
     
@@ -67,7 +75,15 @@ extension WatchConnectivityClient : WCSessionDelegate {
         isConnected.accept(activationState == .activated)
     }
     
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        guard let instruction = message["instruction"] as? String else {
+            return
+        }
+        
+        if instruction == "friendsUpdated", let friends = message["value"] as? [[String : Any]] {
+            dataStore.friends.accept(friends.map({Person(json: JSON($0))}))
+        }
         
     }
     

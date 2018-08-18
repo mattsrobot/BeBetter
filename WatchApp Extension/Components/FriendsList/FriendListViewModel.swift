@@ -14,13 +14,18 @@ import RxSwift
 class FriendListViewModel {
     
     fileprivate var connectivityClient: WatchConnectivityClient
+    fileprivate var dataStore: Datastore
     
-    init(connectivityClient: WatchConnectivityClient = WatchConnectivityClient()) {
+    init(connectivityClient: WatchConnectivityClient = .shared, dataStore: Datastore = .shared) {
         self.connectivityClient = connectivityClient
+        self.dataStore = dataStore
     }
 
     func fetchFriends() -> Observable<[Person]> {
-        return connectivityClient.friends.asObservable()
+        // As the watch/ios connection to fetch latest friends
+        connectivityClient.fetchFriends()
+        // Observe changes from the datastore
+        return dataStore.friends.asObservable()
     }
     
     
