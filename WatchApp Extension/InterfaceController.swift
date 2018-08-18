@@ -21,21 +21,24 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
-        viewModel.fetchFriends().subscribe { event in
-            if case let .next(friends) = event {
-                self.table?.setNumberOfRows(friends.count, withRowType: "FriendRow")
-                var i = 0
-                repeat {
-                    guard let row = self.table?.rowController(at: i) as? FriendRow else {
-                        continue
-                    }
-                    let friend = friends[i]
-                    row.nameLabel?.setText(friend.name)
-                    row.distanceLabel?.setText("\(friend.distance)m")
-                    i += 1
-                } while (i < friends.count)
+        viewModel
+            .fetchFriends()
+            .subscribe { event in
+                if case let .next(friends) = event {
+                    self.display(friends: friends)
+                }
             }
-        }.disposed(by: disposeBag)
+            .disposed(by: disposeBag)
+    }
+    
+    private func display(friends: [Person]) {
+        self.table?.setNumberOfRows(friends.count, withRowType: "FriendRow")
+        for i in 0..<friends.count {
+            let friend = friends[i]
+            let row = self.table?.rowController(at: i) as? FriendRow
+            row?.nameLabel?.setText(friend.name)
+            row?.distanceLabel?.setText("\(friend.distance)m")
+        }
     }
 }
 

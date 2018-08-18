@@ -14,6 +14,9 @@ import SwiftyJSON
 
 class WatchConnectivityClient : NSObject {
     
+    private(set) var friends: BehaviorRelay<[Person]> = BehaviorRelay(value: [])
+    private(set) var isConnected = BehaviorRelay(value: false)
+    
     fileprivate var disposeBag = DisposeBag()
     
     override init() {
@@ -29,27 +32,26 @@ class WatchConnectivityClient : NSObject {
         let session = WCSession.default
         session.delegate = self
         session.activate()
+        
+        isConnected
+            .filter({$0})
+            .subscribe({ _ in
+                self.fetchFriends()
+            })
+            .disposed(by: disposeBag)
     }
     
-    func fetchFriends() -> Observable<[Person]> {
-        return Observable.create { observer in
-            let session = WCSession.default
-            if session.isReachable {
-                session.sendMessage(["instruction" : "fetchFriends"],
-                                    replyHandler: { reply in
-                                        guard let friendsInfo = reply["friends"] as? [[String : Any]] else {
-                                            observer.on(.completed)
-                                            return
-                                        }
-                                        let friends = friendsInfo.map({Person(json: JSON($0))})
-                                        observer.onNext(friends)
-                                    }, errorHandler: { error in
-                                        observer.onError(error)
-                                    })
-            } else {
-                observer.on(.completed)
-            }
-            return Disposables.create()
+    func fetchFriends() {
+        let session = WCSession.default
+        if session.isReachable {
+            session.sendMessage(["instruction" : "fetchFriends"],
+                                replyHandler: { reply in
+                                    guard let friendsInfo = reply["friends"] as? [[String : Any]] else {
+                                        return
+                                    }
+                                    let friends = friendsInfo.map({Person(json: JSON($0))})
+                                    self.friends.accept(friends)
+            }, errorHandler: nil)
         }
     }
     
@@ -57,8 +59,12 @@ class WatchConnectivityClient : NSObject {
 
 extension WatchConnectivityClient : WCSessionDelegate {
     
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        isConnected.accept(session.isReachable)
+    }
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
+        isConnected.accept(activationState == .activated)
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {

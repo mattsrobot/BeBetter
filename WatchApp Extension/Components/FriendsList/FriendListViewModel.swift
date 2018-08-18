@@ -20,7 +20,7 @@ class FriendListViewModel {
     }
 
     func fetchFriends() -> Observable<[Person]> {
-        return connectivityClient.fetchFriends()
+        return connectivityClient.friends.asObservable()
     }
     
     
