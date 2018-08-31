@@ -25,7 +25,7 @@ class CompetitionService {
         return calendar.component(.year, from: Date())
     }
     
-    /// The current week number for the competition data to use.
+    /// The current year number for the competition data to use.
     var weekOfYearNumber: Int {
         return calendar.component(.weekOfYear, from: Date())
     }
