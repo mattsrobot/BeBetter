@@ -38,12 +38,15 @@ class CompetitionService {
     
     func updateHealthDataRecord(distanceInMeters: Int) {
     
+        // Get the current competition week number/year.
         let yearNumber = self.yearNumber
         let weekOfYearNumber = self.weekOfYearNumber
     
         let restApi = SFRestAPI.sharedInstance()
     
+        // Safely test if user logged in.
         if restApi.user != nil {
+            // Upsert (create/update) based on the Unique_Id a new Competition entry with the health record information.
             restApi.Promises.upsert(objectType: "Competition__c",
                                     externalIdField: "Unique_Id__c",
                                     externalId: "\(restApi.user.idData!.userId)+\(weekOfYearNumber)+\(yearNumber)",
@@ -65,12 +68,18 @@ class CompetitionService {
     
     func fetchFriends() -> Observable<[Person]> {
         
+        // Get the current competition week number/year.
         let yearNumber = self.yearNumber
         let weekOfYearNumber = self.weekOfYearNumber
-        let soqlQuery = "SELECT Distance__c, User__c, User__r.Name, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
         
+        // Fetch the latest health data and friend list for the current competition.
+        let soqlQuery = "SELECT Distance__c, User__c, User__r.Name, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
+
+        // Return an observable to async report the fetched Friends from Salesforce.
         return Observable.create { observer in
+
             let restApi = SFRestAPI.sharedInstance()
+            
             // Safely test if user logged in
             if restApi.user != nil {
                 restApi.Promises
@@ -79,13 +88,18 @@ class CompetitionService {
                         restApi.Promises.send(request: request)
                     }
                     .done { response in
+                        
+                        // Tell subscribers (when we've finished) the data has finished loading.
                         defer {
                             observer.on(.completed)
                         }
+                        
+                        // Get the response JSON
                         guard let dataRows = response.asJsonDictionary()["records"] as? [[String : Any]] else {
                             return
                         }
                         
+                        // Map the JSON to a Person object
                         let friends:[Person] = dataRows.map { row in
                             let user = row["User__r"] as? [String : Any]
                             let name = user?["Name"] as? String ?? ""
@@ -93,6 +107,7 @@ class CompetitionService {
                             return Person(name: name, distance: distance)
                         }
                         
+                        // Tell observers of the fetched friends
                         observer.onNext(friends)
                     }
                     .catch { error in
