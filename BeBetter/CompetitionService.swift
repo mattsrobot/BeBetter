@@ -53,9 +53,9 @@ class CompetitionService {
                                     externalIdField: "Unique_Id__c",
                                     externalId: "\(restApi.user.idData!.userId)+\(weekOfYearNumber)+\(yearNumber)",
                                     fieldList: ["Calendar_Year__c" : yearNumber,
-                                        "Calendar_Week__c" : weekOfYearNumber,
-                                        "Distance__c" : 100,
-                                        "User__Id" : restApi.user.idData!.userId])
+                                                "Calendar_Week__c" : weekOfYearNumber,
+                                                "Distance__c" : 100,
+                                                "User__c" : restApi.user.idData!.userId])
                 .then { request in
                     restApi.Promises.send(request: request)
                 }
