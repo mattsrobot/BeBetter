@@ -13,11 +13,6 @@ import SalesforceSDKCore
 import SalesforceSwiftSDK
 import PromiseKit
 
-enum CompetitionServiceResult {
-    case success
-    case failure
-}
-
 class CompetitionService {
     
     /// The calendar we use for the competition data.
@@ -41,7 +36,7 @@ class CompetitionService {
                                                            from: Date()))!
     }
     
-    func updateHealthDataRecord() {
+    func updateHealthDataRecord(distanceInMeters: Int) {
     
         let yearNumber = self.yearNumber
         let weekOfYearNumber = self.weekOfYearNumber
@@ -54,7 +49,7 @@ class CompetitionService {
                                     externalId: "\(restApi.user.idData!.userId)+\(weekOfYearNumber)+\(yearNumber)",
                                     fieldList: ["Calendar_Year__c" : yearNumber,
                                                 "Calendar_Week__c" : weekOfYearNumber,
-                                                "Distance__c" : 100,
+                                                "Distance__c" : distanceInMeters,
                                                 "User__c" : restApi.user.idData!.userId])
                 .then { request in
                     restApi.Promises.send(request: request)

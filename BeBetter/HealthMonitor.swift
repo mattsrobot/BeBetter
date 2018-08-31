@@ -16,11 +16,12 @@ class HealthMonitor {
     
     /// The types of data we're interested in observing.
     fileprivate var readableTypes: Set<HKSampleType> {
-        return [HKWorkoutType.workoutType(),
-                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
-                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
-                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
+        return [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
+//        return [HKWorkoutType.workoutType(),
+//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
+//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
+//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
+//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
     }
 
     /// Sets up everything required to gather information from HealthKit.
@@ -82,8 +83,9 @@ class HealthMonitor {
                 
                 anchor = newAnchor
                 
-                for _ in samples {
-                    self.competitionService.updateHealthDataRecord()
+                if let quantitySamples = samples as? [HKQuantitySample] {
+                    let totalDistance = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
+                    self.competitionService.updateHealthDataRecord(distanceInMeters: Int(totalDistance))
                 }
             }
             
@@ -95,8 +97,9 @@ class HealthMonitor {
                 
                 anchor = newAnchor
                 
-                for _ in samples {
-                    self.competitionService.updateHealthDataRecord()
+                if let quantitySamples = samples as? [HKQuantitySample] {
+                    let totalDistance = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
+                    self.competitionService.updateHealthDataRecord(distanceInMeters: Int(totalDistance))
                 }
             }
             
