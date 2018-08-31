@@ -2,7 +2,7 @@
 //  WatchConnectivityClient.swift
 //  WatchApp Extension
 //
-//  Created by Matthew Wilkinson on 16/8/18.
+//  Created by Radoslava Radkova & Matthew Wilkinson on 16/8/18.
 //  Copyright © 2018 Salesforce. All rights reserved.
 //
 

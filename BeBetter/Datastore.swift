@@ -2,7 +2,7 @@
 //  Datastore.swift
 //  BeBetter
 //
-//  Created by Matthew Wilkinson on 18/8/18.
+//  Created by Radoslava Radkova & Matthew Wilkinson on 18/8/18.
 //  Copyright © 2018 Salesforce. All rights reserved.
 //
 

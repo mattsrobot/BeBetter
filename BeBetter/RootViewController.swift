@@ -78,7 +78,7 @@ class RootViewController : UITableViewController {
         
         cell?.textLabel?.text = name
         cell?.detailTextLabel?.text = "\(distance)"
-        cell?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell?.accessoryType = .disclosureIndicator
         
         if let compID = obj["Id"] as? String {
             let restApi = SFRestAPI.sharedInstance()
