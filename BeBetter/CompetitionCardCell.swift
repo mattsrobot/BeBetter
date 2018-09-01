@@ -26,11 +26,25 @@ class CompetitionCardCell: UITableViewCell {
     
     func display(_ competition: Competition, for theme: Theme) {
         
-        guard let cardView = cardViewOrNil, let competitionTitleLabel = competitionTitleLabelOrNil else {
+        guard let cardView = cardViewOrNil, let competitionTitleLabel = competitionTitleLabelOrNil, let stackView = stackViewOrNil else {
             return
         }
         
+        stackView.subviews.forEach { $0.removeFromSuperview() }
+        
         competitionTitleLabel.text = competition.name
+        
+        competition
+            .participants
+            .sorted(by: { $0.rank > $1.rank })
+            .map({ participant in
+                let row: CompetitionCardRow = CompetitionCardRow.fromNib()
+                row.titleLabelOrNil?.text = participant.person.name
+                return row
+            })
+            .forEach({ row in
+                stackView.addArrangedSubview(row)
+            })
         
         theme.midnightBlue
             .bind(to: rx.backgroundColor)

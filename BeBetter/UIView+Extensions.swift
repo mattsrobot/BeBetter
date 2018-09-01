@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-#if os(iOS) || os(tvOS)
-    
-    import RxCocoa
-    import RxSwift
-    
-    extension Reactive where Base: UIView {
-        public var backgroundColor: Binder<UIColor?> {
-            return Binder(self.base) { view, color in
-                view.backgroundColor = color
-            }
+extension Reactive where Base: UIView {
+    public var backgroundColor: Binder<UIColor?> {
+        return Binder(self.base) { view, color in
+            view.backgroundColor = color
         }
     }
-    
-#endif
+}
+
+extension UIView {
+    class func fromNib<T : UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+}
