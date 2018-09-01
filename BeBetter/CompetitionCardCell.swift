@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SnapKit
 
 class CompetitionCardCell: UITableViewCell {
 
@@ -18,13 +19,18 @@ class CompetitionCardCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var competitionTitleLabelOrNil: UILabel?
+    @IBOutlet weak var stackViewOrNil: UIStackView?
+    
     fileprivate var disposeBag = DisposeBag()
     
     func display(_ competition: Competition, for theme: Theme) {
         
-        guard let cardView = cardViewOrNil else {
+        guard let cardView = cardViewOrNil, let competitionTitleLabel = competitionTitleLabelOrNil else {
             return
         }
+        
+        competitionTitleLabel.text = competition.name
         
         theme.midnightBlue
             .bind(to: rx.backgroundColor)

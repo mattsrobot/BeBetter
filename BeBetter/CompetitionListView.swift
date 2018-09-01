@@ -25,10 +25,10 @@ class CompetitionListView: UIViewController {
     
     fileprivate var disposeBag = DisposeBag()
     
-    @IBOutlet weak var tableView: UITableView? {
+    @IBOutlet weak var tableViewOrNil: UITableView? {
         didSet {
             let friendsTableViewCellNib = UINib.init(nibName: Identifiers.cardList, bundle: .main)
-            tableView?.register(friendsTableViewCellNib, forCellReuseIdentifier: Identifiers.cardList)
+            tableViewOrNil?.register(friendsTableViewCellNib, forCellReuseIdentifier: Identifiers.cardList)
         }
     }
     
@@ -48,7 +48,7 @@ class CompetitionListView: UIViewController {
     
     fileprivate func bind(to viewModel: CompetitionListViewModel) {
         
-        guard let tableView = tableView else {
+        guard let tableView = tableViewOrNil else {
             return
         }
         
@@ -65,7 +65,7 @@ class CompetitionListView: UIViewController {
     
     fileprivate func apply(_ theme: Theme) {
         
-        guard let tableView = tableView else {
+        guard let tableView = tableViewOrNil else {
             return
         }
         

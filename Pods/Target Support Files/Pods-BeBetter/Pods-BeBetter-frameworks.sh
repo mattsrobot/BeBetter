@@ -145,6 +145,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SalesforceSwiftSDK/SalesforceSwiftSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SmartStore/SmartStore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SmartSync/SmartSync.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -159,6 +160,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SalesforceSwiftSDK/SalesforceSwiftSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SmartStore/SmartStore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SmartSync/SmartSync.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

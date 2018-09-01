@@ -17,6 +17,9 @@ class HealthMonitor {
     /// The types of data we're interested in observing.
     fileprivate var readableTypes: Set<HKSampleType> {
         return [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
+        
+        // TODO
+        
 //        return [HKWorkoutType.workoutType(),
 //                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
 //                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,

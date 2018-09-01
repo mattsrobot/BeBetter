@@ -58,6 +58,7 @@ PODS:
   - SmartSync/SmartSync (6.2.0):
     - SalesforceSDKCore
     - SmartStore
+  - SnapKit (4.0.0)
   - SQLCipher (3.4.2):
     - SQLCipher/standard (= 3.4.2)
   - SQLCipher/common (3.4.2)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - SalesforceSwiftSDK (from `mobile_sdk/SalesforceMobileSDK-iOS`)
   - SmartStore (from `mobile_sdk/SalesforceMobileSDK-iOS`)
   - SmartSync (from `mobile_sdk/SalesforceMobileSDK-iOS`)
+  - SnapKit (~> 4.0.0)
   - SwiftyJSON (~> 4.0)
 
 EXTERNAL SOURCES:
@@ -113,9 +115,10 @@ SPEC CHECKSUMS:
   SalesforceSwiftSDK: 2b2d39809ff69674cdb2960b060c2878c056cba7
   SmartStore: 7d6c420b7aa6050ed0aed65e9a163ad12b1550f4
   SmartSync: 1604bbb47e111d6f08dd5272dc52d65afaf94abe
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: f70f154ab3fd41f4ab1edd2471397ba86dfc5612
+PODFILE CHECKSUM: 296fef26853f0f35aea7838bbcaaa6ad9df35f40
 
 COCOAPODS: 1.4.0

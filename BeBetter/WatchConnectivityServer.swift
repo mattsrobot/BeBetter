@@ -28,7 +28,9 @@ class WatchConnectivityServer : NSObject {
             .competitions
             .subscribe { event in
                 if case let .next(competitions) = event {
-                    guard WCSession.isSupported() else { return }
+                    guard WCSession.isSupported() else {
+                        return
+                    }
                     let session = WCSession.default
                     guard session.isReachable else { return }
                     session.sendMessage(["instruction" : "competitionsUpdated",

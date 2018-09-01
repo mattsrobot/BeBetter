@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompetitionListView" customModule="BeBetter" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="l3C-A2-pPS" id="e71-CT-jcY"/>
+                <outlet property="tableViewOrNil" destination="l3C-A2-pPS" id="e71-CT-jcY"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vk2-bv-8ib"/>
             </connections>
         </placeholder>

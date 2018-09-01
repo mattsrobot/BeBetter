@@ -7,6 +7,6 @@
 */
 
 "screen.competitionlist.title.default" = "Competition Summary";
-"screen.competitionlist.categories.runningdistance" = "Running Distance";
+"screen.competitionlist.categories.runningdistance" = "Running Distance (meters)";
 "screen.competitionlist.categories.setepcount" = "Step Count";
 "screen.competitionlist.categories.energyburned" = "Active Kcal Burned";

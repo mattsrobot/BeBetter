@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Arial.ttf">
+            <string>ArialMT</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,12 +25,31 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cjp-Wr-M6b">
                         <rect key="frame" x="16" y="8" width="343" height="45.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Kcal Burned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5I-RY-dI4">
+                                <rect key="frame" x="16" y="8" width="144" height="19"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                <color key="textColor" red="0.52156862745098043" green="0.58823529411764708" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vhb-qg-aWW">
+                                <rect key="frame" x="16" y="35" width="311" height="2.5"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Vhb-qg-aWW" secondAttribute="bottom" constant="8" id="QT2-9G-HUf"/>
+                            <constraint firstItem="Vhb-qg-aWW" firstAttribute="top" secondItem="f5I-RY-dI4" secondAttribute="bottom" constant="8" id="QeF-3v-sIJ"/>
+                            <constraint firstItem="f5I-RY-dI4" firstAttribute="top" secondItem="Cjp-Wr-M6b" secondAttribute="top" constant="8" id="TsL-5k-t7Z"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="XpE-CD-Uui"/>
+                            <constraint firstAttribute="trailing" secondItem="Vhb-qg-aWW" secondAttribute="trailing" constant="16" id="aFk-I6-kbj"/>
+                            <constraint firstItem="f5I-RY-dI4" firstAttribute="leading" secondItem="Cjp-Wr-M6b" secondAttribute="leading" constant="16" id="deI-ew-aL5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f5I-RY-dI4" secondAttribute="trailing" constant="16" id="keE-2x-3qQ"/>
+                            <constraint firstItem="Vhb-qg-aWW" firstAttribute="leading" secondItem="Cjp-Wr-M6b" secondAttribute="leading" constant="16" id="qKP-7d-Wl7"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.039215686274509803" green="0.10196078431372549" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="Cjp-Wr-M6b" firstAttribute="leading" secondItem="7fH-E5-Xci" secondAttribute="leading" constant="16" id="2S8-7i-RXc"/>
                     <constraint firstAttribute="trailing" secondItem="Cjp-Wr-M6b" secondAttribute="trailing" constant="16" id="AaC-hi-1ae"/>
@@ -36,8 +60,10 @@
             <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="cardViewOrNil" destination="Cjp-Wr-M6b" id="dcf-pU-h12"/>
+                <outlet property="competitionTitleLabelOrNil" destination="f5I-RY-dI4" id="5Sc-dI-fXD"/>
+                <outlet property="stackViewOrNil" destination="Vhb-qg-aWW" id="abA-UX-bt5"/>
             </connections>
-            <point key="canvasLocation" x="-104.5" y="57.5"/>
+            <point key="canvasLocation" x="-104.5" y="57"/>
         </tableViewCell>
     </objects>
 </document>

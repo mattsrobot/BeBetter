@@ -23,6 +23,7 @@ end
 target 'BeBetter' do
     platform :ios, '10.0'
     common_pods
+    pod 'SnapKit', '~> 4.0.0'
     salesforce
 end
 

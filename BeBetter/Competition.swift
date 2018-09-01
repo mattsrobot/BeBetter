@@ -33,14 +33,23 @@ struct Competition {
 extension Competition {
     
     static fileprivate func competition(name: String, records: [[String : Any]], key: String) -> Competition {
+        
+        // Default to 1 to avoid divide by zero error
+        
+        let maxScore = records
+            .map({ $0[key] as? Int ?? 1 })
+            .sorted()
+            .first ?? 1
+        
         let participants:[CompetitionParticipant] = records.map { row in
             let user = row["User__r"] as? [String : Any]
             let name = user?["Name"] as? String ?? ""
             let person = Person(name: name)
-            let distanceWalkingRunning = row[key] as? Int ?? 0
-            let participant = CompetitionParticipant(person: person, score: distanceWalkingRunning)
-            return participant
+            let score = row[key] as? Int ?? 1
+            let rank = Double(score/maxScore)
+            return CompetitionParticipant(person: person, score: score, rank: rank)
         }
+        
         return Competition(name: name, participants: participants)
     }
     
