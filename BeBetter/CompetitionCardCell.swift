@@ -20,7 +20,7 @@ class CompetitionCardCell: UITableViewCell {
     
     fileprivate var disposeBag = DisposeBag()
     
-    func display(_ person: Person, for theme: Theme) {
+    func display(_ competition: Competition, for theme: Theme) {
         
         guard let cardView = cardViewOrNil else {
             return

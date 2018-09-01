@@ -21,11 +21,11 @@ class FriendListViewModel {
         self.dataStore = dataStore
     }
 
-    func fetchFriends() -> Observable<[Person]> {
-        // As the watch/ios connection to fetch latest friends
-        connectivityClient.fetchFriends()
+    func fetchCompetitions() -> Observable<[Competition]> {
+        // As the watch/ios connection to fetch latest competition stats
+        connectivityClient.fetchCompetitions()
         // Observe changes from the datastore
-        return dataStore.friends.asObservable()
+        return dataStore.competitions.asObservable()
     }
     
     

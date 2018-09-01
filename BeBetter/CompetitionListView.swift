@@ -57,8 +57,8 @@ class CompetitionListView: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.fetchCompetitions()
-            .bind(to: tableView.rx.items(cellIdentifier: Identifiers.cardList)) { (index, friend: Person, cell: CompetitionCardCell) in
-                cell.display(friend, for: self.theme)
+            .bind(to: tableView.rx.items(cellIdentifier: Identifiers.cardList)) { (index, competition: Competition, cell: CompetitionCardCell) in
+                cell.display(competition, for: self.theme)
             }
             .disposed(by: disposeBag)
     }

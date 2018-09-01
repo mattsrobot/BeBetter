@@ -66,7 +66,7 @@ class CompetitionService {
         }
     }
     
-    func fetchCompetitions() -> Observable<[Person]> {
+    func fetchCompetitions() -> Observable<[Competition]> {
         
         // Get the current competition week number/year.
         let yearNumber = self.yearNumber
@@ -95,20 +95,16 @@ class CompetitionService {
                         }
                         
                         // Get the response JSON
-                        guard let dataRows = response.asJsonDictionary()["records"] as? [[String : Any]] else {
+                        guard let records = response.asJsonDictionary()["records"] as? [[String : Any]] else {
                             return
                         }
                         
                         // Map the JSON to a Person object
-                        let friends:[Person] = dataRows.map { row in
-                            let user = row["User__r"] as? [String : Any]
-                            let name = user?["Name"] as? String ?? ""
-                            let distance = row["Distance__c"] as? Int ?? 0
-                            return Person(name: name, distance: distance)
-                        }
+                        var competitions = [Competition]()
+                        competitions.append(Competition.distanceWalkingRunningCompetition(records))
                         
                         // Tell observers of the fetched friends
-                        observer.onNext(friends)
+                        observer.onNext(competitions)
                     }
                     .catch { error in
                         SalesforceSwiftLogger.log(type(of:self), level:.debug, message:"Error: \(error)")

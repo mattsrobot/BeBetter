@@ -13,4 +13,8 @@ struct CompetitionParticipant {
     let person: Person
     let score: Int
 
+    var asJSON: [String : Any] {
+        return ["person" : person.asJSON,
+                "score" : score]
+    }
 }

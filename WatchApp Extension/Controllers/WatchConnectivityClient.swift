@@ -43,20 +43,20 @@ class WatchConnectivityClient : NSObject {
         isConnected
             .filter({$0})
             .subscribe({ _ in
-                self.fetchFriends()
+                self.fetchCompetitions()
             })
             .disposed(by: disposeBag)
     }
     
-    func fetchFriends() {
+    func fetchCompetitions() {
         let session = WCSession.default
         if session.isReachable {
-            session.sendMessage(["instruction" : "fetchFriends"], replyHandler: { reply in
-                guard let friendsInfo = reply["friends"] as? [[String : Any]] else {
+            session.sendMessage(["instruction" : "fetchCompetitions"], replyHandler: { reply in
+                guard let competitionsInfo = reply["competitions"] as? [[String : Any]] else {
                     return
                 }
-                let friends = friendsInfo.map({Person(json: JSON($0))})
-                self.dataStore.friends.accept(friends)
+                let competitions = competitionsInfo.map({Competition(json: JSON($0))})
+                self.dataStore.competitions.accept(competitions)
             }, errorHandler: { (error) in
                 print(error)
             })
@@ -81,8 +81,8 @@ extension WatchConnectivityClient : WCSessionDelegate {
             return
         }
         
-        if instruction == "friendsUpdated", let friends = message["value"] as? [[String : Any]] {
-            dataStore.friends.accept(friends.map({Person(json: JSON($0))}))
+        if instruction == "competitionsUpdated", let competitions = message["value"] as? [[String : Any]] {
+            dataStore.competitions.accept(competitions.map({Competition(json: JSON($0))}))
         }
         
     }

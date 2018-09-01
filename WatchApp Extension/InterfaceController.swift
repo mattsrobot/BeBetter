@@ -22,23 +22,23 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         viewModel
-            .fetchFriends()
+            .fetchCompetitions()
             .subscribe { event in
-                if case let .next(friends) = event {
-                    self.display(friends: friends)
+                if case let .next(competition) = event {
+                    self.display(competition)
                 }
             }
             .disposed(by: disposeBag)
     }
     
-    private func display(friends: [Person]) {
-        self.table?.setNumberOfRows(friends.count, withRowType: "FriendRow")
-        for i in 0..<friends.count {
-            let friend = friends[i]
-            let row = self.table?.rowController(at: i) as? FriendRow
-            row?.nameLabel?.setText(friend.name)
-            row?.distanceLabel?.setText("\(friend.distance)m")
-        }
+    private func display(_ competition: [Competition]) {
+//        self.table?.setNumberOfRows(friends.count, withRowType: "FriendRow")
+//        for i in 0..<friends.count {
+//            let friend = friends[i]
+//            let row = self.table?.rowController(at: i) as? FriendRow
+//            row?.nameLabel?.setText(friend.name)
+////            row?.distanceLabel?.setText("\(friend.distance)m")
+//        }
     }
 }
 

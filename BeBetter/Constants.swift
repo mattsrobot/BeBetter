@@ -10,11 +10,18 @@ import UIKit
 
 enum LocalizedStrings {
     
-    enum FriendsListScreen {
+    enum CompetitionListScreen {
         
         enum Title {
-            static let `default` = NSLocalizedString("screen.friendslist.title.default")
+            static let `default` = NSLocalizedString("screen.competitionlist.title.default")
         }
+        
+        enum Categories {
+            static let runningDistance = NSLocalizedString("screen.competitionlist.categories.runningdistance")
+            static let stepCount = NSLocalizedString("screen.competitionlist.categories.setepcount")
+            static let energyBurned = NSLocalizedString("screen.competitionlist.categories.energyburned")
+        }
+        
     }
 }
 
