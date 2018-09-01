@@ -16,7 +16,13 @@ class FriendsListView: UIViewController {
         static let friendsList = "FriendTableViewCell"
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     private(set) var viewModel: FriendsListViewModel!
+    private(set) var theme: Theme!
+    
     fileprivate var disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView? {
@@ -26,9 +32,10 @@ class FriendsListView: UIViewController {
         }
     }
     
-    init(with viewModel: FriendsListViewModel) {
+    init(with viewModel: FriendsListViewModel, theme: Theme = .shared) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        self.theme = theme
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,20 +47,41 @@ class FriendsListView: UIViewController {
     }
     
     fileprivate func bind(to viewModel: FriendsListViewModel) {
+        
         guard let tableView = tableView else {
             return
         }
         
+        viewModel.title
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
         viewModel.fetchFriends()
             .bind(to: tableView.rx.items(cellIdentifier: Identifiers.friendsList)) { (index, friend: Person, cell: FriendTableViewCell) in
-                cell.display(friend)
+                cell.display(friend, for: self.theme)
             }
             .disposed(by: disposeBag)
+    }
+    
+    fileprivate func apply(_ theme: Theme) {
+        
+        guard let tableView = tableView else {
+            return
+        }
+        
+        theme.midnightBlue
+            .bind(to: view.rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        theme.midnightBlue
+            .bind(to: tableView.rx.backgroundColor)
+            .disposed(by: disposeBag)        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)
+        apply(theme)
     }
 
 }

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  BeBetter
+
+  Created by Matthew Wilkinson on 1/9/18.
+  Copyright © 2018 Salesforce. All rights reserved.
+*/
+
+"screen.friendslist.title.default" = "Competition Summary";

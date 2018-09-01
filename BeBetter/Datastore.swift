@@ -15,5 +15,4 @@ class Datastore {
     static let shared = Datastore()
 
     private(set) var friends: BehaviorRelay<[Person]> = BehaviorRelay(value: [])
-    
 }

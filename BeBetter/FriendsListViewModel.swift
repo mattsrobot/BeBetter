@@ -12,6 +12,8 @@ import RxSwift
 
 class FriendsListViewModel {
     
+    private(set) var title = BehaviorRelay(value: LocalizedStrings.FriendsListScreen.Title.default)
+
     fileprivate var competitionService: CompetitionService
     
     init(competitionService: CompetitionService = CompetitionService()) {

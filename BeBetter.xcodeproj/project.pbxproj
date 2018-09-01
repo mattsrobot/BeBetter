@@ -34,6 +34,14 @@
 		DE36397C21220F6F00634BCC /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36397B21220F6F00634BCC /* FriendListViewModel.swift */; };
 		DE36397D21220F8200634BCC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639482121B7C800634BCC /* Person.swift */; };
 		DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639802122172F00634BCC /* WatchConnectivityServer.swift */; };
+		DE369B34213AB1D400AE9381 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B33213AB1D300AE9381 /* Theme.swift */; };
+		DE369B37213ABAE500AE9381 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B36213ABAE500AE9381 /* UIView+Extensions.swift */; };
+		DE369B38213ABB2F00AE9381 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B33213AB1D300AE9381 /* Theme.swift */; };
+		DE369B3A213AC34500AE9381 /* BetterNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B39213AC34500AE9381 /* BetterNavigationController.swift */; };
+		DE369B3C213AC40A00AE9381 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B3B213AC40A00AE9381 /* Constants.swift */; };
+		DE369B3E213AC46D00AE9381 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE369B3D213AC46D00AE9381 /* Localizable.strings */; };
+		DE369B3F213AC47400AE9381 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE369B3D213AC46D00AE9381 /* Localizable.strings */; };
+		DE369B40213AC47900AE9381 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B3B213AC40A00AE9381 /* Constants.swift */; };
 		DE7769602126E21F00D02A3C /* HealthMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77695F2126E21F00D02A3C /* HealthMonitor.swift */; };
 		DE7769622126E31C00D02A3C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7769612126E31C00D02A3C /* HealthKit.framework */; };
 		DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
@@ -136,6 +144,11 @@
 		DE3639782121CAB200634BCC /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
 		DE36397B21220F6F00634BCC /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		DE3639802122172F00634BCC /* WatchConnectivityServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityServer.swift; sourceTree = "<group>"; };
+		DE369B33213AB1D300AE9381 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		DE369B36213ABAE500AE9381 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		DE369B39213AC34500AE9381 /* BetterNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterNavigationController.swift; sourceTree = "<group>"; };
+		DE369B3B213AC40A00AE9381 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DE369B3D213AC46D00AE9381 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		DE77695F2126E21F00D02A3C /* HealthMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMonitor.swift; sourceTree = "<group>"; };
 		DE7769612126E31C00D02A3C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DE7BEEB42128562900F11D16 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
@@ -207,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				4FF12F8A1DCA91F5004D9EF9 /* BeBetter.entitlements */,
+				DE369B35213ABAC500AE9381 /* Extensions */,
 				4FD6C4A11B755265002F9F90 /* Classes */,
 				4FD6C4771B754AF1002F9F90 /* Supporting Files */,
 			);
@@ -236,6 +250,10 @@
 				4FD6C4791B754AF1002F9F90 /* AppDelegate.swift */,
 				4FD6C49A1B755242002F9F90 /* Bridging-Header.h */,
 				4F393A281C3C8BCD00B3EA13 /* main.swift */,
+				DE369B33213AB1D300AE9381 /* Theme.swift */,
+				DE369B3B213AC40A00AE9381 /* Constants.swift */,
+				DE369B39213AC34500AE9381 /* BetterNavigationController.swift */,
+				DE369B3D213AC46D00AE9381 /* Localizable.strings */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -359,6 +377,14 @@
 				DE77695F2126E21F00D02A3C /* HealthMonitor.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DE369B35213ABAC500AE9381 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE369B36213ABAE500AE9381 /* UIView+Extensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		DE7BEEB32128561500F11D16 /* Datastore */ = {
@@ -524,6 +550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE369B3E213AC46D00AE9381 /* Localizable.strings in Resources */,
 				CEA8CA041F071B2300448B51 /* Images.xcassets in Resources */,
 				B7168FBC1FACC6F900A48DB5 /* LaunchScreen.storyboard in Resources */,
 				DE3639462121B75000634BCC /* FriendsListView.xib in Resources */,
@@ -552,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE3639682121C60000634BCC /* Assets.xcassets in Resources */,
+				DE369B3F213AC47400AE9381 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,11 +780,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE369B37213ABAE500AE9381 /* UIView+Extensions.swift in Sources */,
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
 				DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
+				DE369B34213AB1D400AE9381 /* Theme.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
+				DE369B3C213AC40A00AE9381 /* Constants.swift in Sources */,
+				DE369B3A213AC34500AE9381 /* BetterNavigationController.swift in Sources */,
 				DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */,
 				DE3639492121B7C800634BCC /* Person.swift in Sources */,
 				DE3639442121B63A00634BCC /* FriendsListViewModel.swift in Sources */,
@@ -779,10 +811,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE369B38213ABB2F00AE9381 /* Theme.swift in Sources */,
 				DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */,
 				DE7BEEB621285D8F00F11D16 /* Datastore.swift in Sources */,
 				DE36397D21220F8200634BCC /* Person.swift in Sources */,
 				DE3639662121C60000634BCC /* NotificationController.swift in Sources */,
+				DE369B40213AC47900AE9381 /* Constants.swift in Sources */,
 				DE3639642121C60000634BCC /* ExtensionDelegate.swift in Sources */,
 				DE3639792121CAB200634BCC /* FriendRow.swift in Sources */,
 				DE3639622121C60000634BCC /* InterfaceController.swift in Sources */,

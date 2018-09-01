@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class FriendTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel?
     @IBOutlet weak var distanceLabel: UILabel?
     
-    func display(_ person: Person) {
+    fileprivate var disposeBag = DisposeBag()
+    
+    func display(_ person: Person, for theme: Theme) {
         nameLabel?.text = person.name
         distanceLabel?.text = "\(person.distance)m"
+        
+        theme.midnightBlue
+            .bind(to: rx.backgroundColor)
+            .disposed(by: disposeBag)
     }
 }

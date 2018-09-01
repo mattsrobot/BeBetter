@@ -44,7 +44,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     {
         super.init()
         
-        
         SalesforceSwiftSDKManager.initSDK()
         .Builder.configure { (appconfig: SFSDKAppConfig) -> Void in
             appconfig.oauthScopes = ["web", "api"]
@@ -85,6 +84,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         watchConnectivityServer.activate()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = Theme.shared.midnightBlue.value
         self.initializeAppViewState();
         
         // If you wish to register for push notifications, uncomment the line below.  Note that,
@@ -147,15 +147,16 @@ class AppDelegate : UIResponder, UIApplicationDelegate
             }
             return
         }
-        
+        Theme.shared.apply()
         self.window!.rootViewController = InitialViewController(nibName: nil, bundle: nil)
         self.window!.makeKeyAndVisible()
     }
     
     func setupRootViewController()
     {
+        Theme.shared.apply()
         let rootVC = FriendsListView(with: FriendsListViewModel())
-        let navVC = UINavigationController(rootViewController: rootVC)
+        let navVC = BetterNavigationController(rootViewController: rootVC)
         self.window!.rootViewController = navVC
         watchConnectivityServer.activate()
         healthMonitor.activate()
