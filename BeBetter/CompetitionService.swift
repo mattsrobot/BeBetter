@@ -66,7 +66,7 @@ class CompetitionService {
         }
     }
     
-    func fetchFriends() -> Observable<[Person]> {
+    func fetchCompetitions() -> Observable<[Person]> {
         
         // Get the current competition week number/year.
         let yearNumber = self.yearNumber

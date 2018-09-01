@@ -10,29 +10,29 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class FriendsListView: UIViewController {
+class CompetitionListView: UIViewController {
     
     fileprivate struct Identifiers {
-        static let friendsList = "FriendTableViewCell"
+        static let cardList = "CompetitionCardCell"
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    private(set) var viewModel: FriendsListViewModel!
+    private(set) var viewModel: CompetitionListViewModel!
     private(set) var theme: Theme!
     
     fileprivate var disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView? {
         didSet {
-            let friendsTableViewCellNib = UINib.init(nibName: Identifiers.friendsList, bundle: .main)
-            tableView?.register(friendsTableViewCellNib, forCellReuseIdentifier: Identifiers.friendsList)
+            let friendsTableViewCellNib = UINib.init(nibName: Identifiers.cardList, bundle: .main)
+            tableView?.register(friendsTableViewCellNib, forCellReuseIdentifier: Identifiers.cardList)
         }
     }
     
-    init(with viewModel: FriendsListViewModel, theme: Theme = .shared) {
+    init(with viewModel: CompetitionListViewModel, theme: Theme = .shared) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
         self.theme = theme
@@ -46,7 +46,7 @@ class FriendsListView: UIViewController {
         fatalError("use init(with viewModel:)")
     }
     
-    fileprivate func bind(to viewModel: FriendsListViewModel) {
+    fileprivate func bind(to viewModel: CompetitionListViewModel) {
         
         guard let tableView = tableView else {
             return
@@ -56,8 +56,8 @@ class FriendsListView: UIViewController {
             .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
         
-        viewModel.fetchFriends()
-            .bind(to: tableView.rx.items(cellIdentifier: Identifiers.friendsList)) { (index, friend: Person, cell: FriendTableViewCell) in
+        viewModel.fetchCompetitions()
+            .bind(to: tableView.rx.items(cellIdentifier: Identifiers.cardList)) { (index, friend: Person, cell: CompetitionCardCell) in
                 cell.display(friend, for: self.theme)
             }
             .disposed(by: disposeBag)

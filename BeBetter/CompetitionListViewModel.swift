@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class FriendsListViewModel {
+class CompetitionListViewModel {
     
     private(set) var title = BehaviorRelay(value: LocalizedStrings.FriendsListScreen.Title.default)
 
@@ -20,8 +20,8 @@ class FriendsListViewModel {
         self.competitionService = competitionService
     }
     
-    func fetchFriends() -> Observable<[Person]> {
-        return competitionService.fetchFriends()
+    func fetchCompetitions() -> Observable<[Person]> {
+        return competitionService.fetchCompetitions()
     }
     
 }

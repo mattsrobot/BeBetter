@@ -16,12 +16,12 @@
 		B7168FBC1FACC6F900A48DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7168FBB1FACC6F900A48DB5 /* LaunchScreen.storyboard */; };
 		CEA8CA041F071B2300448B51 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA8CA031F071B2300448B51 /* Images.xcassets */; };
 		DE3639382121B57C00634BCC /* BeBetterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639372121B57C00634BCC /* BeBetterTests.swift */; };
-		DE3639422121B60B00634BCC /* FriendsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639412121B60B00634BCC /* FriendsListView.swift */; };
-		DE3639442121B63A00634BCC /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639432121B63A00634BCC /* FriendsListViewModel.swift */; };
-		DE3639462121B75000634BCC /* FriendsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3639452121B75000634BCC /* FriendsListView.xib */; };
+		DE3639422121B60B00634BCC /* CompetitionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639412121B60B00634BCC /* CompetitionListView.swift */; };
+		DE3639442121B63A00634BCC /* CompetitionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639432121B63A00634BCC /* CompetitionListViewModel.swift */; };
+		DE3639462121B75000634BCC /* CompetitionListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3639452121B75000634BCC /* CompetitionListView.xib */; };
 		DE3639492121B7C800634BCC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639482121B7C800634BCC /* Person.swift */; };
-		DE36394B2121BB1B00634BCC /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36394A2121BB1B00634BCC /* FriendTableViewCell.swift */; };
-		DE36394D2121BB2D00634BCC /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE36394C2121BB2D00634BCC /* FriendTableViewCell.xib */; };
+		DE36394B2121BB1B00634BCC /* CompetitionCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36394A2121BB1B00634BCC /* CompetitionCardCell.swift */; };
+		DE36394D2121BB2D00634BCC /* CompetitionCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE36394C2121BB2D00634BCC /* CompetitionCardCell.xib */; };
 		DE3639542121C60000634BCC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3639522121C60000634BCC /* Interface.storyboard */; };
 		DE3639562121C60000634BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3639552121C60000634BCC /* Assets.xcassets */; };
 		DE36395D2121C60000634BCC /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DE36395C2121C60000634BCC /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -42,6 +42,12 @@
 		DE369B3E213AC46D00AE9381 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE369B3D213AC46D00AE9381 /* Localizable.strings */; };
 		DE369B3F213AC47400AE9381 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE369B3D213AC46D00AE9381 /* Localizable.strings */; };
 		DE369B40213AC47900AE9381 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B3B213AC40A00AE9381 /* Constants.swift */; };
+		DE369B42213AEA6800AE9381 /* CompetitionCardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B41213AEA6800AE9381 /* CompetitionCardRow.swift */; };
+		DE369B44213AEA8D00AE9381 /* CompetitionCardRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE369B43213AEA8D00AE9381 /* CompetitionCardRow.xib */; };
+		DE369B46213AED3100AE9381 /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B45213AED3100AE9381 /* Competition.swift */; };
+		DE369B47213AED3500AE9381 /* Competition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B45213AED3100AE9381 /* Competition.swift */; };
+		DE369B49213AEDB100AE9381 /* CompetitionParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B48213AEDB100AE9381 /* CompetitionParticipant.swift */; };
+		DE369B4A213AEDB100AE9381 /* CompetitionParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B48213AEDB100AE9381 /* CompetitionParticipant.swift */; };
 		DE7769602126E21F00D02A3C /* HealthMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE77695F2126E21F00D02A3C /* HealthMonitor.swift */; };
 		DE7769622126E31C00D02A3C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7769612126E31C00D02A3C /* HealthKit.framework */; };
 		DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
@@ -124,12 +130,12 @@
 		DE3639352121B57C00634BCC /* BeBetterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeBetterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3639372121B57C00634BCC /* BeBetterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeBetterTests.swift; sourceTree = "<group>"; };
 		DE3639392121B57C00634BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE3639412121B60B00634BCC /* FriendsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListView.swift; sourceTree = "<group>"; };
-		DE3639432121B63A00634BCC /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
-		DE3639452121B75000634BCC /* FriendsListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsListView.xib; sourceTree = "<group>"; };
+		DE3639412121B60B00634BCC /* CompetitionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionListView.swift; sourceTree = "<group>"; };
+		DE3639432121B63A00634BCC /* CompetitionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionListViewModel.swift; sourceTree = "<group>"; };
+		DE3639452121B75000634BCC /* CompetitionListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompetitionListView.xib; sourceTree = "<group>"; };
 		DE3639482121B7C800634BCC /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		DE36394A2121BB1B00634BCC /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
-		DE36394C2121BB2D00634BCC /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		DE36394A2121BB1B00634BCC /* CompetitionCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCardCell.swift; sourceTree = "<group>"; };
+		DE36394C2121BB2D00634BCC /* CompetitionCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompetitionCardCell.xib; sourceTree = "<group>"; };
 		DE3639502121C60000634BCC /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3639532121C60000634BCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		DE3639552121C60000634BCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,6 +155,10 @@
 		DE369B39213AC34500AE9381 /* BetterNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterNavigationController.swift; sourceTree = "<group>"; };
 		DE369B3B213AC40A00AE9381 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DE369B3D213AC46D00AE9381 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		DE369B41213AEA6800AE9381 /* CompetitionCardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCardRow.swift; sourceTree = "<group>"; };
+		DE369B43213AEA8D00AE9381 /* CompetitionCardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompetitionCardRow.xib; sourceTree = "<group>"; };
+		DE369B45213AED3100AE9381 /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
+		DE369B48213AEDB100AE9381 /* CompetitionParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionParticipant.swift; sourceTree = "<group>"; };
 		DE77695F2126E21F00D02A3C /* HealthMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMonitor.swift; sourceTree = "<group>"; };
 		DE7769612126E31C00D02A3C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DE7BEEB42128562900F11D16 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
@@ -295,27 +305,31 @@
 		DE36393F2121B5CF00634BCC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DE3639402121B5DB00634BCC /* FriendsList */,
+				DE3639402121B5DB00634BCC /* CompetitionList */,
 			);
 			name = Components;
 			sourceTree = "<group>";
 		};
-		DE3639402121B5DB00634BCC /* FriendsList */ = {
+		DE3639402121B5DB00634BCC /* CompetitionList */ = {
 			isa = PBXGroup;
 			children = (
-				DE3639412121B60B00634BCC /* FriendsListView.swift */,
-				DE3639432121B63A00634BCC /* FriendsListViewModel.swift */,
-				DE36394A2121BB1B00634BCC /* FriendTableViewCell.swift */,
-				DE36394C2121BB2D00634BCC /* FriendTableViewCell.xib */,
-				DE3639452121B75000634BCC /* FriendsListView.xib */,
+				DE3639432121B63A00634BCC /* CompetitionListViewModel.swift */,
+				DE3639412121B60B00634BCC /* CompetitionListView.swift */,
+				DE3639452121B75000634BCC /* CompetitionListView.xib */,
+				DE36394A2121BB1B00634BCC /* CompetitionCardCell.swift */,
+				DE36394C2121BB2D00634BCC /* CompetitionCardCell.xib */,
+				DE369B41213AEA6800AE9381 /* CompetitionCardRow.swift */,
+				DE369B43213AEA8D00AE9381 /* CompetitionCardRow.xib */,
 			);
-			name = FriendsList;
+			name = CompetitionList;
 			sourceTree = "<group>";
 		};
 		DE3639472121B7AD00634BCC /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DE3639482121B7C800634BCC /* Person.swift */,
+				DE369B48213AEDB100AE9381 /* CompetitionParticipant.swift */,
+				DE369B45213AED3100AE9381 /* Competition.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -550,11 +564,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE369B44213AEA8D00AE9381 /* CompetitionCardRow.xib in Resources */,
 				DE369B3E213AC46D00AE9381 /* Localizable.strings in Resources */,
 				CEA8CA041F071B2300448B51 /* Images.xcassets in Resources */,
 				B7168FBC1FACC6F900A48DB5 /* LaunchScreen.storyboard in Resources */,
-				DE3639462121B75000634BCC /* FriendsListView.xib in Resources */,
-				DE36394D2121BB2D00634BCC /* FriendTableViewCell.xib in Resources */,
+				DE3639462121B75000634BCC /* CompetitionListView.xib in Resources */,
+				DE36394D2121BB2D00634BCC /* CompetitionCardCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,17 +800,20 @@
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
 				DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
+				DE369B49213AEDB100AE9381 /* CompetitionParticipant.swift in Sources */,
+				DE369B42213AEA6800AE9381 /* CompetitionCardRow.swift in Sources */,
 				DE369B34213AB1D400AE9381 /* Theme.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
 				DE369B3C213AC40A00AE9381 /* Constants.swift in Sources */,
 				DE369B3A213AC34500AE9381 /* BetterNavigationController.swift in Sources */,
 				DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */,
 				DE3639492121B7C800634BCC /* Person.swift in Sources */,
-				DE3639442121B63A00634BCC /* FriendsListViewModel.swift in Sources */,
+				DE3639442121B63A00634BCC /* CompetitionListViewModel.swift in Sources */,
+				DE369B46213AED3100AE9381 /* Competition.swift in Sources */,
 				DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */,
-				DE3639422121B60B00634BCC /* FriendsListView.swift in Sources */,
+				DE3639422121B60B00634BCC /* CompetitionListView.swift in Sources */,
 				DE7769602126E21F00D02A3C /* HealthMonitor.swift in Sources */,
-				DE36394B2121BB1B00634BCC /* FriendTableViewCell.swift in Sources */,
+				DE36394B2121BB1B00634BCC /* CompetitionCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,10 +829,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE369B47213AED3500AE9381 /* Competition.swift in Sources */,
 				DE369B38213ABB2F00AE9381 /* Theme.swift in Sources */,
 				DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */,
 				DE7BEEB621285D8F00F11D16 /* Datastore.swift in Sources */,
 				DE36397D21220F8200634BCC /* Person.swift in Sources */,
+				DE369B4A213AEDB100AE9381 /* CompetitionParticipant.swift in Sources */,
 				DE3639662121C60000634BCC /* NotificationController.swift in Sources */,
 				DE369B40213AC47900AE9381 /* Constants.swift in Sources */,
 				DE3639642121C60000634BCC /* ExtensionDelegate.swift in Sources */,

@@ -155,7 +155,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     func setupRootViewController()
     {
         Theme.shared.apply()
-        let rootVC = FriendsListView(with: FriendsListViewModel())
+        let rootVC = CompetitionListView(with: CompetitionListViewModel())
         let navVC = BetterNavigationController(rootViewController: rootVC)
         self.window!.rootViewController = navVC
         watchConnectivityServer.activate()

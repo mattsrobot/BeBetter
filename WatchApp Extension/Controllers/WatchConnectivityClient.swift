@@ -13,7 +13,7 @@ import RxSwift
 import SwiftyJSON
 
 enum WatchConnectivityClientError : Error {
-    case unknownInsturction
+    case unknownInstruction
 }
 
 class WatchConnectivityClient : NSObject {

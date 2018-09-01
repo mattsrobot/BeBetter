@@ -12,7 +12,7 @@ import RxCocoa
 import RxSwift
 
 enum WatchConnectivityServerError : Error {
-    case unknownInsturction
+    case unknownInstruction
 }
 
 class WatchConnectivityServer : NSObject {
@@ -58,7 +58,7 @@ class WatchConnectivityServer : NSObject {
         
         // Ask competition service for latest friends
         competitionService
-            .fetchFriends()
+            .fetchCompetitions()
             .subscribe { event in
                 // If we get some new friends, update the datastore.
                 if case let .next(friends) = event {
@@ -78,7 +78,7 @@ extension WatchConnectivityServer : WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
         
         guard let instruction = message["instruction"] as? String else {
-            replyHandler(["error": WatchConnectivityServerError.unknownInsturction.localizedDescription])
+            replyHandler(["error": WatchConnectivityServerError.unknownInstruction.localizedDescription])
             return
         }
         

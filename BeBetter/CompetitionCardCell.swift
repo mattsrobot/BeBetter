@@ -10,19 +10,28 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class FriendTableViewCell: UITableViewCell {
+class CompetitionCardCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel?
-    @IBOutlet weak var distanceLabel: UILabel?
+    @IBOutlet weak var cardViewOrNil: UIView? {
+        didSet {
+            cardViewOrNil?.layer.cornerRadius = 8
+        }
+    }
     
     fileprivate var disposeBag = DisposeBag()
     
     func display(_ person: Person, for theme: Theme) {
-        nameLabel?.text = person.name
-        distanceLabel?.text = "\(person.distance)m"
+        
+        guard let cardView = cardViewOrNil else {
+            return
+        }
         
         theme.midnightBlue
             .bind(to: rx.backgroundColor)
+            .disposed(by: disposeBag)
+        
+        theme.deepBlue
+            .bind(to: cardView.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
 }
