@@ -29,52 +29,48 @@ import SalesforceSwiftSDK
 import WatchConnectivity
 
 // Fill these in when creating a new Connected Application on Force.com
-let RemoteAccessConsumerKey = "3MVG9Iu66FKeHhINkB1l7xt7kR8czFcCTUhgoA8Ol2Ltf1eYHOU4SqQRSEitYFDUpqRWcoQ2.dBv_a1Dyu5xa";
-let OAuthRedirectURI        = "testsfdc:///mobilesdk/detect/oauth/done";
 
-class AppDelegate : UIResponder, UIApplicationDelegate
-{
+class AppDelegate : UIResponder, UIApplicationDelegate {
+    
     var window: UIWindow?
     
     fileprivate var watchConnectivityServer = WatchConnectivityServer()
     fileprivate var healthMonitor = HealthMonitor()
     
-    override
-    init()
-    {
+    override init() {
         super.init()
         
-        SalesforceSwiftSDKManager.initSDK()
-        .Builder.configure { (appconfig: SFSDKAppConfig) -> Void in
-            appconfig.oauthScopes = ["web", "api"]
-            appconfig.remoteAccessConsumerKey = RemoteAccessConsumerKey
-            appconfig.oauthRedirectURI = OAuthRedirectURI
+        SalesforceSwiftSDKManager.initSDK().Builder.configure { appconfig in
+            appconfig.oauthScopes = ["web", "api", "refresh_token"]
+            appconfig.remoteAccessConsumerKey = Secrets.remoteAccessConsumerKey
+            appconfig.oauthRedirectURI = Secrets.OAuthRedirectURI
         }.postInit {
-            //Uncomment the following line inorder to enable/force the use of advanced authentication flow.
-            // SFUserAccountManager.sharedInstance().advancedAuthConfiguration = SFOAuthAdvancedAuthConfiguration.require;
-            // OR
-            // To  retrieve advanced auth configuration from the org, to determine whether to initiate advanced authentication.
-            // SFUserAccountManager.sharedInstance().advancedAuthConfiguration = SFOAuthAdvancedAuthConfiguration.allow;
-            
-            // NOTE: If advanced authentication is configured or forced,  it will launch Safari to handle authentication
-            // instead of a webview. You must implement application:openURL:options  to handle the callback.
-        }
-        .postLaunch {  [unowned self] (launchActionList: SFSDKLaunchAction) in
+             SFUserAccountManager.sharedInstance().advancedAuthConfiguration = .require
+        }.postLaunch { [weak self] launchActionList in
+            guard let `self` = self else {
+                return
+            }
             let launchActionString = SalesforceSDKManager.launchActionsStringRepresentation(launchActionList)
-            SalesforceSwiftLogger.log(type(of:self), level:.info, message:"Post-launch: launch actions taken: \(launchActionString)")
-                self.setupRootViewController()
+            SalesforceSwiftLogger.log(type(of:self),
+                                      level: .info,
+                                      message:"Post-launch: launch actions taken: \(launchActionString)")
             
-        }.postLogout {  [unowned self] in
-            self.handleSdkManagerLogout()
-        }.switchUser{ [unowned self] (fromUser: SFUserAccount?, toUser: SFUserAccount?) -> () in
-            self.handleUserSwitch(fromUser, toUser: toUser)
-        }.launchError {  [unowned self] (error: Error, launchActionList: SFSDKLaunchAction) in
-            SFSDKLogger.log(type(of:self), level:.error, message:"Error during SDK launch: \(error.localizedDescription)")
+            self.setupRootViewController()
+        }.postLogout {  [weak self] in
+            self?.handleSdkManagerLogout()
+        }.switchUser{ [weak self] fromUser, toUser in
+            self?.handleUserSwitch(fromUser, toUser: toUser)
+        }.launchError {  [weak self] error, launchActionList in
+            guard let `self` = self else {
+                return
+            }
+            SFSDKLogger.log(type(of:self),
+                            level: .error,
+                            message: "Error during SDK launch: \(error.localizedDescription)")
             self.initializeAppViewState()
             SalesforceSDKManager.shared().launch()
         }
         .done()
-   
     }
     
     // MARK: - App delegate lifecycle
@@ -87,24 +83,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         self.window?.backgroundColor = Theme.shared.midnightBlue.value
         self.initializeAppViewState();
         
-        // If you wish to register for push notifications, uncomment the line below.  Note that,
-        // if you want to receive push notifications from Salesforce, you will also need to
-        // implement the application:didRegisterForRemoteNotificationsWithDeviceToken: method (below).
-        //
-        // SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
         
-        //Uncomment the code below to see how you can customize the color, textcolor, font and fontsize of the navigation bar
-        //var loginViewConfig = SFSDKLoginViewControllerConfig()
-        //Set showSettingsIcon to NO if you want to hide the settings icon on the nav bar
-        //loginViewConfig.showSettingsIcon = false
-        //Set showNavBar to NO if you want to hide the top bar
-        //loginViewConfig.showNavbar = true
-        //loginViewConfig.navBarColor = UIColor(red: 0.051, green: 0.765, blue: 0.733, alpha: 1.0)
-        //loginViewConfig.navBarTextColor = UIColor.white
-        //loginViewConfig.navBarFont = UIFont(name: "Helvetica", size: 16.0)
-        //SFUserAccountManager.sharedInstance().loginViewControllerConfig = loginViewConfig
+        let loginViewConfig = SFSDKLoginViewControllerConfig()
+        loginViewConfig.showSettingsIcon = false
+        loginViewConfig.showNavbar = true
+        loginViewConfig.navBarColor = Theme.shared.midnightBlue.value
+        loginViewConfig.navBarTextColor = .white
+        loginViewConfig.navBarFont = UIFont(name: "Ariel", size: 16.0)
+        SFUserAccountManager.sharedInstance().loginViewControllerConfig = loginViewConfig
         
-        SalesforceSwiftSDKManager.shared().launch()
         return true
     }
     
@@ -122,20 +109,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     }
 
 
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error )
-    {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error ) {
         // Respond to any push notification registration errors here.
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-
-        // If you're using advanced authentication:
-        // --Configure your app to handle incoming requests to your
-        //   OAuth Redirect URI custom URL scheme.
-        // --Uncomment the following line and delete the original return statement:
-
-        // return  SFUserAccountManager.sharedInstance().handleAdvancedAuthenticationResponse(url, options: options)
-        return false;
+         return  SFUserAccountManager.sharedInstance().handleAdvancedAuthenticationResponse(url, options: options)
     }
 
     // MARK: - Private methods
@@ -148,7 +127,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate
             return
         }
         Theme.shared.apply()
-        self.window!.rootViewController = InitialViewController(nibName: nil, bundle: nil)
+        let rootVC = OnboardingView(with: OnboardingViewModel())
+        self.window!.rootViewController = rootVC
         self.window!.makeKeyAndVisible()
     }
     

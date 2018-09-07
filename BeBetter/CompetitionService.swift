@@ -43,13 +43,15 @@ class CompetitionService {
         let weekOfYearNumber = self.weekOfYearNumber
     
         let restApi = SFRestAPI.sharedInstance()
-    
+        
         // Safely test if user logged in.
-        if restApi.user != nil {
+        let user: SFUserAccount? = restApi.user
+        
+        if user != nil {
             // Upsert (create/update) based on the Unique_Id a new Competition entry with the health record information.
             restApi.Promises.upsert(objectType: "Competition__c",
                                     externalIdField: "Unique_Id__c",
-                                    externalId: "\(restApi.user.idData!.userId)+\(weekOfYearNumber)+\(yearNumber)",
+                                    externalId: "\(restApi.user.idData!.userId)\(weekOfYearNumber)\(yearNumber)",
                                     fieldList: ["Calendar_Year__c" : yearNumber,
                                                 "Calendar_Week__c" : weekOfYearNumber,
                                                 "Distance__c" : distanceInMeters,
@@ -81,7 +83,9 @@ class CompetitionService {
             let restApi = SFRestAPI.sharedInstance()
             
             // Safely test if user logged in
-            if restApi.user != nil {
+            let user: SFUserAccount? = restApi.user
+            
+            if user != nil {
                 restApi.Promises
                     .query(soql: soqlQuery)
                     .then { request  in

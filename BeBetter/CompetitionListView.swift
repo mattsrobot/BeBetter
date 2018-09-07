@@ -52,7 +52,7 @@ class CompetitionListView: UIViewController {
             return
         }
         
-        viewModel.title
+        viewModel.title 
             .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
         

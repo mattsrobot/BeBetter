@@ -28,22 +28,35 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGD-vp-VO9">
-                    <rect key="frame" x="98" y="0.0" width="261" height="33"/>
+                    <rect key="frame" x="99" y="0.0" width="260" height="33"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHn-VU-Pv4">
+                            <rect key="frame" x="225" y="10.5" width="27" height="12.5"/>
+                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" red="0.20392156862745098" green="0.49803921568627452" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="DHn-VU-Pv4" firstAttribute="centerY" secondItem="bGD-vp-VO9" secondAttribute="centerY" id="Sce-rW-wtv"/>
+                        <constraint firstAttribute="trailing" secondItem="DHn-VU-Pv4" secondAttribute="trailing" constant="8" id="U6Y-Gd-i61"/>
+                    </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-3R-ezY">
-                    <rect key="frame" x="57" y="0.0" width="33" height="33"/>
+                    <rect key="frame" x="58" y="0.0" width="33" height="33"/>
+                    <color key="backgroundColor" red="0.66215997409326421" green="0.66215997409326421" blue="0.66215997409326421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="33" id="RfE-Gb-bGq"/>
                         <constraint firstAttribute="height" constant="33" id="RsY-at-JdC"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radko" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REE-h4-AKz">
-                    <rect key="frame" x="8" y="8.5" width="41" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radko" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REE-h4-AKz">
+                    <rect key="frame" x="0.0" y="7.5" width="50" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="90" id="G20-la-scK"/>
+                        <constraint firstAttribute="width" constant="50" id="G20-la-scK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -51,7 +64,7 @@
             <color key="backgroundColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="57P-TD-p0m" secondAttribute="bottom" id="5bb-gA-8Ih"/>
-                <constraint firstItem="REE-h4-AKz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="AgK-BA-hb4"/>
+                <constraint firstItem="REE-h4-AKz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AgK-BA-hb4"/>
                 <constraint firstAttribute="bottom" secondItem="bGD-vp-VO9" secondAttribute="bottom" id="CK7-Sk-kMp"/>
                 <constraint firstItem="57P-TD-p0m" firstAttribute="leading" secondItem="bGD-vp-VO9" secondAttribute="trailing" id="W38-Z3-Tb2"/>
                 <constraint firstItem="57P-TD-p0m" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZSZ-E7-Rt5"/>
@@ -68,6 +81,7 @@
                 <outlet property="imageViewOrNil" destination="iJf-3R-ezY" id="Wkh-GE-gIY"/>
                 <outlet property="rankBarOrNil" destination="bGD-vp-VO9" id="2B3-bW-ued"/>
                 <outlet property="rankBarTrailingConstraintOrNil" destination="W38-Z3-Tb2" id="AUp-cv-bRB"/>
+                <outlet property="scoreLabelOrNil" destination="DHn-VU-Pv4" id="E8c-1N-gin"/>
                 <outlet property="titleLabelOrNil" destination="REE-h4-AKz" id="FRf-fF-32h"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-199"/>

@@ -27,16 +27,16 @@
                         <rect key="frame" x="16" y="8" width="343" height="100.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Kcal Burned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5I-RY-dI4">
-                                <rect key="frame" x="16" y="8" width="144" height="19"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                <rect key="frame" x="16" y="16" width="161" height="21.5"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="19"/>
                                 <color key="textColor" red="0.52156862745098043" green="0.58823529411764708" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vhb-qg-aWW">
-                                <rect key="frame" x="16" y="35" width="311" height="57.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Vhb-qg-aWW">
+                                <rect key="frame" x="16" y="53.5" width="311" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4R-1d-z1l">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="57.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="31"/>
                                         <state key="normal" title="Placeholder"/>
                                     </button>
                                 </subviews>
@@ -44,9 +44,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Vhb-qg-aWW" secondAttribute="bottom" constant="8" id="QT2-9G-HUf"/>
-                            <constraint firstItem="Vhb-qg-aWW" firstAttribute="top" secondItem="f5I-RY-dI4" secondAttribute="bottom" constant="8" id="QeF-3v-sIJ"/>
-                            <constraint firstItem="f5I-RY-dI4" firstAttribute="top" secondItem="Cjp-Wr-M6b" secondAttribute="top" constant="8" id="TsL-5k-t7Z"/>
+                            <constraint firstAttribute="bottom" secondItem="Vhb-qg-aWW" secondAttribute="bottom" constant="16" id="QT2-9G-HUf"/>
+                            <constraint firstItem="Vhb-qg-aWW" firstAttribute="top" secondItem="f5I-RY-dI4" secondAttribute="bottom" constant="16" id="QeF-3v-sIJ"/>
+                            <constraint firstItem="f5I-RY-dI4" firstAttribute="top" secondItem="Cjp-Wr-M6b" secondAttribute="top" constant="16" id="TsL-5k-t7Z"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="XpE-CD-Uui"/>
                             <constraint firstAttribute="trailing" secondItem="Vhb-qg-aWW" secondAttribute="trailing" constant="16" id="aFk-I6-kbj"/>
                             <constraint firstItem="f5I-RY-dI4" firstAttribute="leading" secondItem="Cjp-Wr-M6b" secondAttribute="leading" constant="16" id="deI-ew-aL5"/>

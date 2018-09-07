@@ -6,6 +6,10 @@
   Copyright © 2018 Salesforce. All rights reserved.
 */
 
+"screen.onboarding.title.default" = "Welcome";
+"screen.onboarding.subtitle.default" = "to BeBetter app";
+"screen.onboarding.loginButton.default" = "Login to Salesforce";
+
 "screen.competitionlist.title.default" = "Competition Summary";
 "screen.competitionlist.categories.runningdistance" = "Running Distance (meters)";
 "screen.competitionlist.categories.setepcount" = "Step Count";

@@ -52,6 +52,9 @@
 		DE7769622126E31C00D02A3C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7769612126E31C00D02A3C /* HealthKit.framework */; };
 		DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
 		DE7BEEB621285D8F00F11D16 /* Datastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7BEEB42128562900F11D16 /* Datastore.swift */; };
+		DEA2908D2142742800C39F22 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2908B2142742800C39F22 /* OnboardingView.swift */; };
+		DEA2908E2142742800C39F22 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA2908C2142742800C39F22 /* OnboardingView.xib */; };
+		DEA290902142908800C39F22 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */; };
 		DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */; };
 		DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */; };
 		EBA073DACDB4E5B56ED14725 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EE08CB3C830D8ED186259 /* Pods_WatchApp_Extension.framework */; };
@@ -162,6 +165,9 @@
 		DE77695F2126E21F00D02A3C /* HealthMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMonitor.swift; sourceTree = "<group>"; };
 		DE7769612126E31C00D02A3C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DE7BEEB42128562900F11D16 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
+		DEA2908B2142742800C39F22 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DEA2908C2142742800C39F22 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +311,7 @@
 		DE36393F2121B5CF00634BCC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DEA2908A2142740200C39F22 /* Onboarding */,
 				DE3639402121B5DB00634BCC /* CompetitionList */,
 			);
 			name = Components;
@@ -407,6 +414,16 @@
 				DE7BEEB42128562900F11D16 /* Datastore.swift */,
 			);
 			name = Datastore;
+			sourceTree = "<group>";
+		};
+		DEA2908A2142740200C39F22 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */,
+				DEA2908B2142742800C39F22 /* OnboardingView.swift */,
+				DEA2908C2142742800C39F22 /* OnboardingView.xib */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		DEDD1ABD2125BAEE009C61CF /* Controllers */ = {
@@ -567,6 +584,7 @@
 				DE369B44213AEA8D00AE9381 /* CompetitionCardRow.xib in Resources */,
 				DE369B3E213AC46D00AE9381 /* Localizable.strings in Resources */,
 				CEA8CA041F071B2300448B51 /* Images.xcassets in Resources */,
+				DEA2908E2142742800C39F22 /* OnboardingView.xib in Resources */,
 				B7168FBC1FACC6F900A48DB5 /* LaunchScreen.storyboard in Resources */,
 				DE3639462121B75000634BCC /* CompetitionListView.xib in Resources */,
 				DE36394D2121BB2D00634BCC /* CompetitionCardCell.xib in Resources */,
@@ -656,6 +674,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeBetter/Pods-BeBetter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage-iOS/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
@@ -672,6 +692,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -698,12 +720,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WatchApp Extension/Pods-WatchApp Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-watchOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage-watchOS/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-watchOS/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-watchOS/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -753,6 +779,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeBetterTests/Pods-BeBetterTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage-iOS/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa-iOS/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift-iOS/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework",
@@ -761,6 +789,8 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -810,11 +840,13 @@
 				DE369B3A213AC34500AE9381 /* BetterNavigationController.swift in Sources */,
 				DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */,
 				DE3639492121B7C800634BCC /* Person.swift in Sources */,
+				DEA2908D2142742800C39F22 /* OnboardingView.swift in Sources */,
 				DE3639442121B63A00634BCC /* CompetitionListViewModel.swift in Sources */,
 				DE369B46213AED3100AE9381 /* Competition.swift in Sources */,
 				DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */,
 				DE3639422121B60B00634BCC /* CompetitionListView.swift in Sources */,
 				DE7769602126E21F00D02A3C /* HealthMonitor.swift in Sources */,
+				DEA290902142908800C39F22 /* OnboardingViewModel.swift in Sources */,
 				DE36394B2121BB1B00634BCC /* CompetitionCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,7 +39,7 @@ class CompetitionCardCell: UITableViewCell {
             .sorted(by: { $0.rank > $1.rank })
             .map({ participant in
                 let row: CompetitionCardRow = CompetitionCardRow.fromNib()
-                row.titleLabelOrNil?.text = participant.person.name
+                row.display(participant)
                 return row
             })
             .forEach({ row in
@@ -54,4 +54,5 @@ class CompetitionCardCell: UITableViewCell {
             .bind(to: cardView.rx.backgroundColor)
             .disposed(by: disposeBag)
     }
+
 }

@@ -12,7 +12,7 @@ struct CompetitionParticipant {
     
     let person: Person
     let score: Int
-    let rank: Double // value between 0...1
+    let rank: CGFloat // value between 0...1
 
     var asJSON: [String : Any] {
         return ["person" : person.asJSON,

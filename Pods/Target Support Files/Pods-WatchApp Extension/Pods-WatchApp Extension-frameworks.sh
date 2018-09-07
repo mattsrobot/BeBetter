@@ -134,11 +134,15 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-watchOS/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage-watchOS/AlamofireImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS/RxCocoa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxSwift-watchOS/RxSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-watchOS/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-watchOS/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AlamofireImage-watchOS/AlamofireImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxCocoa-watchOS/RxCocoa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RxSwift-watchOS/RxSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON-watchOS/SwiftyJSON.framework"

@@ -18,6 +18,7 @@ def common_pods
     pod 'RxSwift', '~> 4.0'
     pod 'RxCocoa', '~> 4.0'
     pod 'SwiftyJSON', '~> 4.0'
+    pod 'AlamofireImage', '~> 3.3'
 end
 
 target 'BeBetter' do

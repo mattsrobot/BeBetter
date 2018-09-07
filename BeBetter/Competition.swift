@@ -39,14 +39,14 @@ extension Competition {
         let maxScore = records
             .map({ $0[key] as? Int ?? 1 })
             .sorted()
-            .first ?? 1
+            .last ?? 1
         
         let participants:[CompetitionParticipant] = records.map { row in
             let user = row["User__r"] as? [String : Any]
             let name = user?["Name"] as? String ?? ""
             let person = Person(name: name)
             let score = row[key] as? Int ?? 1
-            let rank = Double(score/maxScore)
+            let rank = CGFloat(score/maxScore)
             return CompetitionParticipant(person: person, score: score, rank: rank)
         }
         
