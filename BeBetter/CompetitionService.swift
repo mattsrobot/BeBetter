@@ -15,32 +15,13 @@ import PromiseKit
 
 class CompetitionService {
     
-    /// The calendar we use for the competition data.
-    var calendar: Calendar {
-        return Calendar(identifier: .iso8601)
-    }
-    
-    /// The current week number for the competition data to use.
-    var yearNumber: Int {
-        return calendar.component(.year, from: Date())
-    }
-    
-    /// The current year number for the competition data to use.
-    var weekOfYearNumber: Int {
-        return calendar.component(.weekOfYear, from: Date())
-    }
-    
-    /// The first day of the calendar week date.
-    var firstDayOfWeekDate: Date {
-        return calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear],
-                                                           from: Date()))!
-    }
-    
+    fileprivate(set) var calendarService = CompetitionCalendarService()
+        
     func updateHealthDataRecord(distanceInMeters: Int) {
     
         // Get the current competition week number/year.
-        let yearNumber = self.yearNumber
-        let weekOfYearNumber = self.weekOfYearNumber
+        let yearNumber = calendarService.yearNumber
+        let weekOfYearNumber = calendarService.weekOfYearNumber
     
         let restApi = SFRestAPI.sharedInstance()
         
@@ -60,10 +41,10 @@ class CompetitionService {
                     restApi.Promises.send(request: request)
                 }
                 .done { response in
-                    SalesforceSwiftLogger.log(type(of:self), level:.debug, message:"Succes")
+                    SalesforceSwiftLogger.log(type(of:self), level: .debug, message:"Succes")
                 }
                 .catch { error in
-                    SalesforceSwiftLogger.log(type(of:self), level:.debug, message:"Error: \(error)")
+                    SalesforceSwiftLogger.log(type(of:self), level: .debug, message:"Error: \(error)")
             }
         }
     }
@@ -71,11 +52,11 @@ class CompetitionService {
     func fetchCompetitions() -> Observable<[Competition]> {
         
         // Get the current competition week number/year.
-        let yearNumber = self.yearNumber
-        let weekOfYearNumber = self.weekOfYearNumber
+        let yearNumber = calendarService.yearNumber
+        let weekOfYearNumber = calendarService.weekOfYearNumber
         
         // Fetch the latest health data and friend list for the current competition.
-        let soqlQuery = "SELECT Distance__c, User__c, User__r.Name, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
+        let soqlQuery = "SELECT Distance__c, User__c, User__r.Name, User__r.FullPhotoURL, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
 
         // Return an observable to async report the fetched Friends from Salesforce.
         return Observable.create { observer in
@@ -106,6 +87,9 @@ class CompetitionService {
                         // Map the JSON to a Person object
                         var competitions = [Competition]()
                         competitions.append(Competition.distanceWalkingRunningCompetition(records))
+                        competitions.append(Competition.energyBurnedCompetition(records))
+                        competitions.append(Competition.stepsCompetition(records))
+
                         
                         // Tell observers of the fetched friends
                         observer.onNext(competitions)

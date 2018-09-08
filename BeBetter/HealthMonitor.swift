@@ -14,17 +14,15 @@ class HealthMonitor {
     /// The service class the health monitor uses to update Salesforce with the new data
     private(set) var competitionService = CompetitionService()
     
+    fileprivate(set) var calendarService = CompetitionCalendarService()
+    
     /// The types of data we're interested in observing.
     fileprivate var readableTypes: Set<HKSampleType> {
-        return [HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
-        
-        // TODO
-        
-//        return [HKWorkoutType.workoutType(),
-//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
-//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
-//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-//                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
+        return [HKWorkoutType.workoutType(),
+                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
+                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!,
+                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
+                HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
     }
 
     /// Sets up everything required to gather information from HealthKit.
@@ -61,7 +59,7 @@ class HealthMonitor {
         let earliestPermittedSampleDate = healthStore.earliestPermittedSampleDate()
         
         // The beginning of the calendar week, or the permitted date from healthKit (if HealthKit is later, choose this).
-        let startDate = earliestPermittedSampleDate > competitionService.firstDayOfWeekDate ? earliestPermittedSampleDate : competitionService.firstDayOfWeekDate
+        let startDate = earliestPermittedSampleDate > calendarService.firstDayOfWeekDate ? earliestPermittedSampleDate : calendarService.firstDayOfWeekDate
         
         // The query predicate to only use samples for this date range.
         let sampleDataPredicate = HKQuery.predicateForSamples(withStart: startDate,

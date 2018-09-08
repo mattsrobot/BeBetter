@@ -54,10 +54,11 @@ class OnboardingView: UIViewController {
             .bind(to: loginButton.rx.title())
             .disposed(by: disposeBag)
         
-        loginButton.rx.tap.subscribe(onNext: { _ in
-            SalesforceSwiftSDKManager.shared().launch()
-        }).disposed(by: disposeBag)
-        
+        loginButton.rx.tap
+            .subscribe(onNext: { _ in
+                SalesforceSwiftSDKManager.shared().launch()
+            })
+            .disposed(by: disposeBag)
     }
     
 }

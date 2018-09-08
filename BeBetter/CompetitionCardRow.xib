@@ -43,7 +43,7 @@
                         <constraint firstAttribute="trailing" secondItem="DHn-VU-Pv4" secondAttribute="trailing" constant="8" id="U6Y-Gd-i61"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-3R-ezY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-3R-ezY">
                     <rect key="frame" x="58" y="0.0" width="33" height="33"/>
                     <color key="backgroundColor" red="0.66215997409326421" green="0.66215997409326421" blue="0.66215997409326421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>

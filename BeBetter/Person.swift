@@ -12,17 +12,21 @@ import SwiftyJSON
 struct Person {
 
     let name: String
+    let photoURL: URL?
     
-    init(name: String) {
+    init(name: String, photoURL: URL?) {
         self.name = name
+        self.photoURL = photoURL
     }
 
     init(json: JSON) {
         self.name = json["name"].string ?? ""
+        self.photoURL = json["photoURL"].url
     }
     
-    var asJSON: [String : Any] {
-        return ["name" : name]
+    var asJSON: [String : Any?] {
+        return ["name" : name,
+                "photoURL" : photoURL]
     }
     
 }

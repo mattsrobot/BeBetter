@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import Alamofire
 import AlamofireImage
 
 class CompetitionCardRow: UIView {
     
     struct Constants {
-        static let maxOffset = CGFloat(100)
+        static let maxOffset = CGFloat(150)
     }
 
     @IBOutlet weak var titleLabelOrNil: UILabel?
     @IBOutlet weak var imageViewOrNil: UIImageView? {
         didSet {
             imageViewOrNil?.layer.cornerRadius = 16
+            imageViewOrNil?.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var rankBarOrNil: UIView?
@@ -26,11 +28,23 @@ class CompetitionCardRow: UIView {
     @IBOutlet weak var scoreLabelOrNil: UILabel?
     
     func display(_ participant: CompetitionParticipant) {
+        
         titleLabelOrNil?.text = participant.person.name
         scoreLabelOrNil?.text = String(participant.score)
+        
         let offset:CGFloat = participant.rank == 1 ? 0 : Constants.maxOffset * (1-participant.rank)
         rankBarTrailingConstraintOrNil?.constant = offset
-//        imageViewOrNil?.setIm
+        
+        guard let imageView = imageViewOrNil, let photoURL = participant.person.photoURL else {
+            imageViewOrNil?.image = nil
+            return
+        }
+        
+        Alamofire.request(photoURL).responseImage { response in
+            if let image = response.result.value {
+                imageView.image = image
+            }
+        }
     }
     
 }

@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F393A281C3C8BCD00B3EA13 /* main.swift */; };
 		4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C4791B754AF1002F9F90 /* AppDelegate.swift */; };
-		4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49C1B755242002F9F90 /* RootViewController.swift */; };
-		4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49D1B755242002F9F90 /* InitialViewController.swift */; };
 		74E41257FB628160F9C33427 /* Pods_BeBetterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4881799173BF47FE58F7A5E7 /* Pods_BeBetterTests.framework */; };
 		78A235BD93AB7D080D67CD51 /* Pods_BeBetter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A29C75280BDF73123F14B4 /* Pods_BeBetter.framework */; };
 		B7168FBC1FACC6F900A48DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7168FBB1FACC6F900A48DB5 /* LaunchScreen.storyboard */; };
@@ -55,6 +53,7 @@
 		DEA2908D2142742800C39F22 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2908B2142742800C39F22 /* OnboardingView.swift */; };
 		DEA2908E2142742800C39F22 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA2908C2142742800C39F22 /* OnboardingView.xib */; };
 		DEA290902142908800C39F22 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */; };
+		DEA290922142DA7100C39F22 /* CompetitionCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA290912142DA7100C39F22 /* CompetitionCalendarService.swift */; };
 		DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */; };
 		DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */; };
 		EBA073DACDB4E5B56ED14725 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EE08CB3C830D8ED186259 /* Pods_WatchApp_Extension.framework */; };
@@ -118,8 +117,6 @@
 		4FD6C4781B754AF1002F9F90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FD6C4791B754AF1002F9F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FD6C49A1B755242002F9F90 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		4FD6C49C1B755242002F9F90 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		4FD6C49D1B755242002F9F90 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4FF12F8A1DCA91F5004D9EF9 /* BeBetter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeBetter.entitlements; sourceTree = "<group>"; };
 		65BC930FAC42C678E933E276 /* Pods-BeBetterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeBetterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeBetterTests/Pods-BeBetterTests.release.xcconfig"; sourceTree = "<group>"; };
 		762732C14CFE40A989C3AD70 /* Pods-BeBetter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeBetter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeBetter/Pods-BeBetter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +165,7 @@
 		DEA2908B2142742800C39F22 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		DEA2908C2142742800C39F22 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		DEA290912142DA7100C39F22 /* CompetitionCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCalendarService.swift; sourceTree = "<group>"; };
 		DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,8 +259,6 @@
 				DE36397F2122171B00634BCC /* Services */,
 				DE3639472121B7AD00634BCC /* Models */,
 				DE36393F2121B5CF00634BCC /* Components */,
-				4FD6C49C1B755242002F9F90 /* RootViewController.swift */,
-				4FD6C49D1B755242002F9F90 /* InitialViewController.swift */,
 				4FD6C4791B754AF1002F9F90 /* AppDelegate.swift */,
 				4FD6C49A1B755242002F9F90 /* Bridging-Header.h */,
 				4F393A281C3C8BCD00B3EA13 /* main.swift */,
@@ -387,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */,
+				DEA290912142DA7100C39F22 /* CompetitionCalendarService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -829,13 +826,12 @@
 			files = (
 				DE369B37213ABAE500AE9381 /* UIView+Extensions.swift in Sources */,
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
-				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
+				DEA290922142DA7100C39F22 /* CompetitionCalendarService.swift in Sources */,
 				DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				DE369B49213AEDB100AE9381 /* CompetitionParticipant.swift in Sources */,
 				DE369B42213AEA6800AE9381 /* CompetitionCardRow.swift in Sources */,
 				DE369B34213AB1D400AE9381 /* Theme.swift in Sources */,
-				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
 				DE369B3C213AC40A00AE9381 /* Constants.swift in Sources */,
 				DE369B3A213AC34500AE9381 /* BetterNavigationController.swift in Sources */,
 				DE7BEEB52128562900F11D16 /* Datastore.swift in Sources */,
