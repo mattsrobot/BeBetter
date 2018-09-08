@@ -8,16 +8,52 @@
 
 import UIKit
 import SwiftyJSON
+import HealthKit
+
+fileprivate struct Constants {
+    static let activeEnergyKey = "Active_Energy__c"
+    static let stepsKey = "Steps__c"
+    static let distanceKey = "Distance__c"
+    static let userKey = "User__r"
+    static let nameKey = "Name"
+    static let photoURLKey = "FullPhotoUrl"
+}
 
 struct Competition {
     
-    fileprivate struct Constants {
-        static let activeEnergyKey = "Active_Energy__c"
-        static let stepsKey = "Steps__c"
-        static let distanceKey = "Distance__c"
-        static let userKey = "User__r"
-        static let nameKey = "Name"
-        static let photoURLKey = "FullPhotoUrl"
+    enum Category {
+        
+        case steps
+        case distance
+        case energy
+        
+        /// The field used to store data in Salesforce
+        var soqlField : String {
+            switch self {
+            case .steps: return Constants.stepsKey
+            case .distance: return Constants.distanceKey
+            case .energy: return Constants.activeEnergyKey
+            }
+        }
+        
+        /// The localized name to show
+        var localizedName : String {
+            switch self {
+            case .steps: return LocalizedStrings.CompetitionListScreen.Categories.stepCount
+            case .distance: return LocalizedStrings.CompetitionListScreen.Categories.runningDistance
+            case .energy: return LocalizedStrings.CompetitionListScreen.Categories.energyBurned
+            }
+        }
+        
+        /// The corresponding HealthKit identifier
+        var identifier: HKQuantityTypeIdentifier {
+            switch self {
+            case .steps: return .stepCount
+            case .distance: return .distanceWalkingRunning
+            case .energy: return .activeEnergyBurned
+            }
+        }
+        
     }
 
     let name: String
@@ -67,22 +103,27 @@ extension Competition {
         return Competition(name: name, participants: participants)
     }
     
-    static func energyBurnedCompetition(_ records: [[String : Any]]) -> Competition {
-        return competition(name: LocalizedStrings.CompetitionListScreen.Categories.energyBurned,
+    static fileprivate func competition(for category: Category, using records: [[String : Any]]) -> Competition {
+        return competition(name: category.localizedName,
                            records: records,
-                           key: Constants.activeEnergyKey)
+                           key: category.soqlField)
     }
     
-    static func stepsCompetition(_ records: [[String : Any]]) -> Competition {
-        return competition(name: LocalizedStrings.CompetitionListScreen.Categories.stepCount,
-                           records: records,
-                           key: Constants.stepsKey)
+    static func extract(_ records: [[String : Any]], categories: [Category] = [.distance, .steps, .energy]) -> [Competition] {
+        return categories.map({Competition.competition(for: $0, using: records)})
     }
     
-    static func distanceWalkingRunningCompetition(_ records: [[String : Any]]) -> Competition {
-        return competition(name: LocalizedStrings.CompetitionListScreen.Categories.runningDistance,
-                           records: records,
-                           key: Constants.distanceKey)
-    }
+}
+
+extension HKQuantityTypeIdentifier {
     
+    /// The localized name to show
+    var category : Competition.Category? {
+        switch self {
+        case .stepCount: return .steps
+        case .distanceWalkingRunning: return .distance
+        case .activeEnergyBurned: return .energy
+        default: return nil
+        }
+    }
 }

@@ -12,13 +12,15 @@ import RxSwift
 import SalesforceSDKCore
 import SalesforceSwiftSDK
 import PromiseKit
+import HealthKit
 
 class CompetitionService {
     
+    fileprivate(set) var dataStore = Datastore.shared
     fileprivate(set) var calendarService = CompetitionCalendarService()
         
-    func updateHealthDataRecord(distanceInMeters: Int) {
-    
+    func updateHealthDataRecord(category: Competition.Category, score: Int) {
+            
         // Get the current competition week number/year.
         let yearNumber = calendarService.yearNumber
         let weekOfYearNumber = calendarService.weekOfYearNumber
@@ -35,7 +37,7 @@ class CompetitionService {
                                     externalId: "\(restApi.user.idData!.userId)\(weekOfYearNumber)\(yearNumber)",
                                     fieldList: ["Calendar_Year__c" : yearNumber,
                                                 "Calendar_Week__c" : weekOfYearNumber,
-                                                "Distance__c" : distanceInMeters,
+                                                category.soqlField : score,
                                                 "User__c" : restApi.user.idData!.userId])
                 .then { request in
                     restApi.Promises.send(request: request)
@@ -84,12 +86,8 @@ class CompetitionService {
                             return
                         }
                         
-                        // Map the JSON to a Person object
-                        var competitions = [Competition]()
-                        competitions.append(Competition.distanceWalkingRunningCompetition(records))
-                        competitions.append(Competition.energyBurnedCompetition(records))
-                        competitions.append(Competition.stepsCompetition(records))
-
+                        // Map the JSON records to a competition array
+                        let competitions = Competition.extract(records)
                         
                         // Tell observers of the fetched friends
                         observer.onNext(competitions)

@@ -50,6 +50,19 @@ class HealthMonitor {
         }
     }
     
+    fileprivate func updateHealthRecord(type: HKSampleType, samplesOrNil: [HKSample]?) {
+
+        let identifier = HKQuantityTypeIdentifier.init(rawValue: type.identifier)
+
+        guard let category = identifier.category, let quantitySamples = samplesOrNil as? [HKQuantitySample] else {
+            return
+        }
+        
+        let score = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
+        
+        competitionService.updateHealthDataRecord(category: category, score: Int(score))
+    }
+    
     /// Observes the HealthStore for changes in the types we're interested in, e.g, step count, running distance
     ///
     /// - Parameter healthStore: the healthstore from HealthKit
@@ -78,30 +91,15 @@ class HealthMonitor {
                                               limit: HKObjectQueryNoLimit)
             { (query, samplesOrNil, _, newAnchor, _) in
                 
-                guard let samples = samplesOrNil else {
-                    return
-                }
-                
+                self.updateHealthRecord(type: type, samplesOrNil: samplesOrNil)
                 anchor = newAnchor
-                
-                if let quantitySamples = samples as? [HKQuantitySample] {
-                    let totalDistance = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
-                    self.competitionService.updateHealthDataRecord(distanceInMeters: Int(totalDistance))
-                }
+
             }
             
             query.updateHandler = { (query, samplesOrNil, _, newAnchor, _) in
                 
-                guard let samples = samplesOrNil else {
-                    return
-                }
-                
+                self.updateHealthRecord(type: type, samplesOrNil: samplesOrNil)
                 anchor = newAnchor
-                
-                if let quantitySamples = samples as? [HKQuantitySample] {
-                    let totalDistance = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
-                    self.competitionService.updateHealthDataRecord(distanceInMeters: Int(totalDistance))
-                }
             }
             
             // Run the query.

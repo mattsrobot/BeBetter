@@ -42,7 +42,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     override init() {
         super.init()
-        
         configureSalesforceSDK()
     }
     
@@ -111,9 +110,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
          if SFUserAccountManager.sharedInstance().currentUser?.credentials.accessToken != nil {
             
             SFPushNotificationManager.sharedInstance().registerSalesforceNotifications(completionBlock: {
-                
+                // Handle success
             }, fail: {
-                
+                // Handle failure
             })
          }
     }
@@ -147,12 +146,14 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     fileprivate func navigateToOnboardingScreen() {
+        
         Theme.shared.apply()
         let rootVC = OnboardingView(with: OnboardingViewModel())
         window?.rootViewController = rootVC
     }
     
     fileprivate func navigateToCompetitionListScreen() {
+        
         Theme.shared.apply()
         let rootVC = CompetitionListView(with: CompetitionListViewModel())
         let navVC = BetterNavigationController(rootViewController: rootVC)
