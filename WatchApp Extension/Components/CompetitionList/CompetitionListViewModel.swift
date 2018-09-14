@@ -11,7 +11,7 @@ import WatchConnectivity
 import RxCocoa
 import RxSwift
 
-class FriendListViewModel {
+class CompetitionListViewModel {
     
     fileprivate var connectivityClient: WatchConnectivityClient
     fileprivate var dataStore: Datastore
@@ -22,11 +22,8 @@ class FriendListViewModel {
     }
 
     func fetchCompetitions() -> Observable<[Competition]> {
-        // As the watch/ios connection to fetch latest competition stats
-        connectivityClient.fetchCompetitions()
         // Observe changes from the datastore
         return dataStore.competitions.asObservable()
     }
-    
     
 }

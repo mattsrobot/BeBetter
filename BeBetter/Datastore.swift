@@ -16,3 +16,12 @@ class Datastore {
 
     private(set) var competitions: BehaviorRelay<[Competition]> = BehaviorRelay(value: [])
 }
+
+
+/// A basic in-memory cache, won't scale with many large images.
+class SimpleCache {
+    
+    static let shared = SimpleCache()
+    
+    var images = [String : UIImage]()
+}

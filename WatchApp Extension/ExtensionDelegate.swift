@@ -15,7 +15,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
 
     func applicationDidBecomeActive() {
-        WatchConnectivityClient.shared.fetchCompetitions()
+        
     }
 
     func applicationWillResignActive() {

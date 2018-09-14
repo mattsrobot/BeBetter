@@ -9,32 +9,72 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Competition List View-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchApp" customModuleProvider="target">
+                <controller id="AgC-eL-Hgc" customClass="CompetitionListView" customModule="WatchApp" customModuleProvider="target">
                     <items>
-                        <table alignment="left" id="5Kc-pF-NMr">
+                        <table alignment="left" spacing="0.0" id="5Kc-pF-NMr">
                             <items>
-                                <tableRow identifier="FriendRow" id="k04-Ep-OyD" customClass="FriendRow" customModule="WatchApp" customModuleProvider="target">
-                                    <group key="rootItem" width="1" alignment="left" id="mee-vp-ahV">
+                                <tableRow identifier="CompetitionRow" selectable="NO" id="k04-Ep-OyD" customClass="CompetitionRow" customModule="WatchApp" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="25" alignment="left" layout="vertical" spacing="0.0" id="mee-vp-ahV">
                                         <items>
-                                            <label height="100" alignment="left" text="Label" id="lqG-mJ-otv"/>
-                                            <label height="100" alignment="right" text="Label" textAlignment="right" id="YdP-VH-D3p">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
+                                            <group width="1" alignment="left" verticalAlignment="center" spacing="0.0" id="lhs-uJ-ou2">
+                                                <items>
+                                                    <label alignment="left" text="Competition" id="lqG-mJ-otv">
+                                                        <color key="textColor" red="0.90588235294117647" green="0.95294117647058818" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                    </label>
+                                                </items>
+                                            </group>
                                         </items>
+                                        <color key="backgroundColor" red="0.098039215686274508" green="0.15686274509803921" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </group>
                                     <connections>
-                                        <outlet property="distanceLabel" destination="YdP-VH-D3p" id="c8O-7v-27w"/>
-                                        <outlet property="nameLabel" destination="lqG-mJ-otv" id="AOp-1n-X4R"/>
+                                        <outlet property="nameLabelOrNil" destination="lqG-mJ-otv" id="AOp-1n-X4R"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="ParticipantRow" selectable="NO" id="qYv-KG-Yxn" customClass="ParticipantRow" customModule="WatchApp" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" spacing="0.0" id="nFM-Ea-LnD">
+                                        <items>
+                                            <group width="1" alignment="left" layout="vertical" spacing="1" id="wRB-X9-VIh">
+                                                <items>
+                                                    <group width="1" alignment="left" id="HJT-52-FNd">
+                                                        <items>
+                                                            <group width="20" height="20" alignment="left" radius="10" id="NHP-I5-p5y">
+                                                                <items>
+                                                                    <imageView width="20" height="20" alignment="left" id="aHt-fz-dz6"/>
+                                                                </items>
+                                                            </group>
+                                                            <group width="1" alignment="left" layout="vertical" spacing="0.0" id="mTM-vp-qYx">
+                                                                <items>
+                                                                    <label alignment="left" text="rad" id="M7X-th-ipb">
+                                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                                    </label>
+                                                                    <separator alignment="left" id="iMU-g3-6HV">
+                                                                        <color key="color" red="0.20392156859999999" green="0.49803921569999998" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </separator>
+                                                                </items>
+                                                            </group>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="nameLabelOrNil" destination="M7X-th-ipb" id="bgJ-pa-YPt"/>
+                                        <outlet property="profileImageOrNil" destination="aHt-fz-dz6" id="7ep-Y0-gw0"/>
+                                        <outlet property="separatorOrNil" destination="iMU-g3-6HV" id="QFs-Xs-HcF"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <color key="backgroundColor" red="0.039215686274509803" green="0.10196078431372549" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
-                        <outlet property="table" destination="5Kc-pF-NMr" id="EbS-E0-X2E"/>
+                        <outlet property="tableOrNil" destination="5Kc-pF-NMr" id="EbS-E0-X2E"/>
                     </connections>
                 </controller>
             </objects>

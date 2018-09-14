@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import SalesforceSDKCore
 
 class CompetitionCardRow: UIView {
     
@@ -16,11 +17,14 @@ class CompetitionCardRow: UIView {
         static let maxOffset = CGFloat(150)
     }
 
+    var service = CompetitionService()
+    
     @IBOutlet weak var titleLabelOrNil: UILabel?
     @IBOutlet weak var imageViewOrNil: UIImageView? {
         didSet {
             imageViewOrNil?.layer.cornerRadius = 16
             imageViewOrNil?.layer.masksToBounds = true
+            imageViewOrNil?.image = SFSDKResourceUtils.imageNamed("profile-placeholder")
         }
     }
     @IBOutlet weak var rankBarOrNil: UIView?
@@ -32,18 +36,23 @@ class CompetitionCardRow: UIView {
         titleLabelOrNil?.text = participant.person.name
         scoreLabelOrNil?.text = String(participant.score)
         
-        let offset:CGFloat = participant.rank == 1 ? 0 : Constants.maxOffset * (1-participant.rank)
+        if participant.rank > 1 {
+            print("stupid error")
+        }
+        
+        var offset:CGFloat = participant.rank == 1 ? 0 : Constants.maxOffset * (1-participant.rank)
+        if offset < 0 {
+            offset = 0
+        }
         rankBarTrailingConstraintOrNil?.constant = offset
         
         guard let imageView = imageViewOrNil, let photoURL = participant.person.photoURL else {
-            imageViewOrNil?.image = nil
+            imageViewOrNil?.image = SFSDKResourceUtils.imageNamed("profile-placeholder")
             return
         }
         
-        Alamofire.request(photoURL).responseImage { response in
-            if let image = response.result.value {
-                imageView.image = image
-            }
+        service.fetchProfileImage(photoURL: photoURL) { (image) in
+            imageView.image = image
         }
     }
     

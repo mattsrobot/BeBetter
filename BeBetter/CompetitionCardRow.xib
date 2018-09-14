@@ -43,9 +43,9 @@
                         <constraint firstAttribute="trailing" secondItem="DHn-VU-Pv4" secondAttribute="trailing" constant="8" id="U6Y-Gd-i61"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-3R-ezY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="iJf-3R-ezY">
                     <rect key="frame" x="58" y="0.0" width="33" height="33"/>
-                    <color key="backgroundColor" red="0.66215997409326421" green="0.66215997409326421" blue="0.66215997409326421" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="33" id="RfE-Gb-bGq"/>
                         <constraint firstAttribute="height" constant="33" id="RsY-at-JdC"/>
@@ -87,4 +87,7 @@
             <point key="canvasLocation" x="33.5" y="-199"/>
         </view>
     </objects>
+    <resources>
+        <image name="profile-placeholder" width="40" height="40"/>
+    </resources>
 </document>

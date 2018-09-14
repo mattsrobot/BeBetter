@@ -1,5 +1,5 @@
 //
-//  FriendRow.swift
+//  CompetitionRow.swift
 //  WatchApp Extension
 //
 //  Created by Radoslava Radkova & Matthew Wilkinson on 13/8/18.
@@ -8,9 +8,8 @@
 
 import WatchKit
 
-class FriendRow: NSObject {
+class CompetitionRow: NSObject {
     
-    @IBOutlet var nameLabel: WKInterfaceLabel?
-    @IBOutlet var distanceLabel: WKInterfaceLabel!
+    @IBOutlet var nameLabelOrNil: WKInterfaceLabel?
     
 }

@@ -58,7 +58,7 @@ class HealthMonitor {
             return
         }
         
-        let score = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(1, +)
+        let score = quantitySamples.map({$0.quantity.doubleValue(for: HKUnit.meter())}).reduce(0, +)
         
         competitionService.updateHealthDataRecord(category: category, score: Int(score))
     }
@@ -76,7 +76,7 @@ class HealthMonitor {
         
         // The query predicate to only use samples for this date range.
         let sampleDataPredicate = HKQuery.predicateForSamples(withStart: startDate,
-                                                              end: Date(),
+                                                              end: Date.distantFuture,
                                                               options: [])
         
         // Enumerate each type, and setup an anchoredObjectQuery, which enables delivery of sample updates for each type.

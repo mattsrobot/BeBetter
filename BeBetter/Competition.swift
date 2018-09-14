@@ -65,13 +65,21 @@ struct Competition {
     }
     
     init(json: JSON) {
-        name = ""
-        participants = []
+        name = json["name"].string ?? ""
+        
+        participants = json["participants"].array?.map({CompetitionParticipant(json: $0)}) ?? []
     }
     
     var asJSON: [String : Any] {
         return ["name" : name,
                 "participants" : participants.map({$0.asJSON})]
+    }
+}
+
+extension Competition : Equatable {
+    static func == (lhs: Competition, rhs: Competition) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.participants == rhs.participants
     }
 }
 
@@ -96,7 +104,6 @@ extension Competition {
             let person = Person(name: name, photoURL: photoURL)
             let score = row[key] as? Int ?? 1
             let rank = CGFloat(score)/CGFloat(maxScore)
-            
             return CompetitionParticipant(person: person, score: score, rank: rank)
         }
         

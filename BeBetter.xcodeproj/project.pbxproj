@@ -23,13 +23,13 @@
 		DE3639542121C60000634BCC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE3639522121C60000634BCC /* Interface.storyboard */; };
 		DE3639562121C60000634BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3639552121C60000634BCC /* Assets.xcassets */; };
 		DE36395D2121C60000634BCC /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DE36395C2121C60000634BCC /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		DE3639622121C60000634BCC /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639612121C60000634BCC /* InterfaceController.swift */; };
+		DE3639622121C60000634BCC /* CompetitionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639612121C60000634BCC /* CompetitionListView.swift */; };
 		DE3639642121C60000634BCC /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639632121C60000634BCC /* ExtensionDelegate.swift */; };
 		DE3639662121C60000634BCC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639652121C60000634BCC /* NotificationController.swift */; };
 		DE3639682121C60000634BCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE3639672121C60000634BCC /* Assets.xcassets */; };
 		DE36396D2121C60000634BCC /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DE3639502121C60000634BCC /* WatchApp.app */; };
-		DE3639792121CAB200634BCC /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639782121CAB200634BCC /* FriendRow.swift */; };
-		DE36397C21220F6F00634BCC /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36397B21220F6F00634BCC /* FriendListViewModel.swift */; };
+		DE3639792121CAB200634BCC /* CompetitionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639782121CAB200634BCC /* CompetitionRow.swift */; };
+		DE36397C21220F6F00634BCC /* CompetitionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE36397B21220F6F00634BCC /* CompetitionListViewModel.swift */; };
 		DE36397D21220F8200634BCC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639482121B7C800634BCC /* Person.swift */; };
 		DE3639812122172F00634BCC /* WatchConnectivityServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3639802122172F00634BCC /* WatchConnectivityServer.swift */; };
 		DE369B34213AB1D400AE9381 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE369B33213AB1D300AE9381 /* Theme.swift */; };
@@ -54,6 +54,7 @@
 		DEA2908E2142742800C39F22 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEA2908C2142742800C39F22 /* OnboardingView.xib */; };
 		DEA290902142908800C39F22 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */; };
 		DEA290922142DA7100C39F22 /* CompetitionCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA290912142DA7100C39F22 /* CompetitionCalendarService.swift */; };
+		DEA29094214BDF6F00C39F22 /* ParticipantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA29093214BDF6F00C39F22 /* ParticipantRow.swift */; };
 		DEDD1ABC2125B3B4009C61CF /* CompetitionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */; };
 		DEDD1ABF2125BB0D009C61CF /* WatchConnectivityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */; };
 		EBA073DACDB4E5B56ED14725 /* Pods_WatchApp_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EE08CB3C830D8ED186259 /* Pods_WatchApp_Extension.framework */; };
@@ -141,14 +142,14 @@
 		DE3639552121C60000634BCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE3639572121C60000634BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE36395C2121C60000634BCC /* WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE3639612121C60000634BCC /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DE3639612121C60000634BCC /* CompetitionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionListView.swift; sourceTree = "<group>"; };
 		DE3639632121C60000634BCC /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		DE3639652121C60000634BCC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		DE3639672121C60000634BCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE3639692121C60000634BCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE36396A2121C60000634BCC /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		DE3639782121CAB200634BCC /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
-		DE36397B21220F6F00634BCC /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		DE3639782121CAB200634BCC /* CompetitionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionRow.swift; sourceTree = "<group>"; };
+		DE36397B21220F6F00634BCC /* CompetitionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionListViewModel.swift; sourceTree = "<group>"; };
 		DE3639802122172F00634BCC /* WatchConnectivityServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityServer.swift; sourceTree = "<group>"; };
 		DE369B33213AB1D300AE9381 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		DE369B36213ABAE500AE9381 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		DEA2908C2142742800C39F22 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		DEA2908F2142908800C39F22 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DEA290912142DA7100C39F22 /* CompetitionCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionCalendarService.swift; sourceTree = "<group>"; };
+		DEA29093214BDF6F00C39F22 /* ParticipantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantRow.swift; sourceTree = "<group>"; };
 		DEDD1ABB2125B3B3009C61CF /* CompetitionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionService.swift; sourceTree = "<group>"; };
 		DEDD1ABE2125BB0D009C61CF /* WatchConnectivityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -352,7 +354,6 @@
 			children = (
 				DEDD1ABD2125BAEE009C61CF /* Controllers */,
 				DE3639762121CA8500634BCC /* Components */,
-				DE3639612121C60000634BCC /* InterfaceController.swift */,
 				DE3639632121C60000634BCC /* ExtensionDelegate.swift */,
 				DE3639652121C60000634BCC /* NotificationController.swift */,
 				DE3639672121C60000634BCC /* Assets.xcassets */,
@@ -365,18 +366,20 @@
 		DE3639762121CA8500634BCC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				DE3639772121CA8B00634BCC /* FriendsList */,
+				DE3639772121CA8B00634BCC /* CompetitionList */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		DE3639772121CA8B00634BCC /* FriendsList */ = {
+		DE3639772121CA8B00634BCC /* CompetitionList */ = {
 			isa = PBXGroup;
 			children = (
-				DE3639782121CAB200634BCC /* FriendRow.swift */,
-				DE36397B21220F6F00634BCC /* FriendListViewModel.swift */,
+				DE3639612121C60000634BCC /* CompetitionListView.swift */,
+				DE3639782121CAB200634BCC /* CompetitionRow.swift */,
+				DEA29093214BDF6F00C39F22 /* ParticipantRow.swift */,
+				DE36397B21220F6F00634BCC /* CompetitionListViewModel.swift */,
 			);
-			path = FriendsList;
+			path = CompetitionList;
 			sourceTree = "<group>";
 		};
 		DE36397F2122171B00634BCC /* Services */ = {
@@ -868,9 +871,10 @@
 				DE3639662121C60000634BCC /* NotificationController.swift in Sources */,
 				DE369B40213AC47900AE9381 /* Constants.swift in Sources */,
 				DE3639642121C60000634BCC /* ExtensionDelegate.swift in Sources */,
-				DE3639792121CAB200634BCC /* FriendRow.swift in Sources */,
-				DE3639622121C60000634BCC /* InterfaceController.swift in Sources */,
-				DE36397C21220F6F00634BCC /* FriendListViewModel.swift in Sources */,
+				DE3639792121CAB200634BCC /* CompetitionRow.swift in Sources */,
+				DEA29094214BDF6F00C39F22 /* ParticipantRow.swift in Sources */,
+				DE3639622121C60000634BCC /* CompetitionListView.swift in Sources */,
+				DE36397C21220F6F00634BCC /* CompetitionListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,10 @@ class WatchConnectivityServer : NSObject {
     init(competitionService: CompetitionService = CompetitionService(), dataStore: Datastore = .shared) {
         self.competitionService = competitionService
         self.dataStore = dataStore
+        super.init()
+        
+        activate()
+        
         dataStore
             .competitions
             .subscribe { event in
@@ -31,18 +35,17 @@ class WatchConnectivityServer : NSObject {
                     guard WCSession.isSupported() else {
                         return
                     }
-                    let session = WCSession.default
-                    guard session.isReachable else { return }
-                    session.sendMessage(["instruction" : "competitionsUpdated",
-                                         "value" : competitions.map({$0.asJSON}) ],
-                                        replyHandler: nil,
-                                        errorHandler: nil)
+                    let competitionsUpdated = competitions.map({$0.asJSON})
+                    WCSession.default.sendMessage(["instruction" : "competitionsUpdated",
+                                                   "value" :  competitionsUpdated],
+                                                  replyHandler: nil,
+                                                  errorHandler: nil)
                 }
             }
             .disposed(by: disposeBag)
     }
 
-    func activate() {
+    fileprivate func activate() {
         
         guard WCSession.isSupported() else {
             return
@@ -54,16 +57,12 @@ class WatchConnectivityServer : NSObject {
     
     fileprivate func fetchCompetitions(_ replyHandler: (([String : Any]) -> Swift.Void)? = nil) {
         
-        // Quickly fetch competitions from cache
-        let competitions = dataStore.competitions.value.map({$0.asJSON})
-        replyHandler?(["competitions" : competitions])
-        
         // Ask competition service for latest competitions
         competitionService
             .fetchCompetitions()
             .subscribe { event in
                 // If we get some new competitions, update the datastore.
-                if case let .next(competitions) = event {
+                if case let .next(competitions) = event, self.dataStore.competitions.value != competitions {
                     self.dataStore.competitions.accept(competitions)
                 }
             }
@@ -75,7 +74,11 @@ class WatchConnectivityServer : NSObject {
 
 extension WatchConnectivityServer : WCSessionDelegate {
     
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if activationState == .activated {
+            fetchCompetitions()
+        }
+    }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Swift.Void) {
         
@@ -87,6 +90,14 @@ extension WatchConnectivityServer : WCSessionDelegate {
         if instruction == "fetchCompetitions" {
             fetchCompetitions(replyHandler)
         }
+        
+        if let value = message["value"] as? String, let photoURL = URL(string: value), instruction == "fetchProfileImage" {
+            competitionService.fetchProfileImage(photoURL: photoURL, replyHandler: { image in
+                if let data = UIImageJPEGRepresentation(image.resize(newWidth: 50), 0.1) {
+                    replyHandler(["value" : data])
+                }
+            })
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -97,4 +108,20 @@ extension WatchConnectivityServer : WCSessionDelegate {
         
     }
     
+}
+
+fileprivate extension UIImage {
+    
+    func resize(newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / size.width
+        let newHeight = size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
 }

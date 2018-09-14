@@ -21,12 +21,20 @@ struct Person {
 
     init(json: JSON) {
         self.name = json["name"].string ?? ""
-        self.photoURL = json["photoURL"].url
+        self.photoURL = json["photoURL"].url ?? URL(string: json["photoURL"].string ?? "")
+        
     }
     
     var asJSON: [String : Any?] {
         return ["name" : name,
-                "photoURL" : photoURL]
+                "photoURL" : photoURL?.absoluteString]
     }
     
+}
+
+extension Person : Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name &&
+            lhs.photoURL == rhs.photoURL
+    }
 }

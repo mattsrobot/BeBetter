@@ -20,12 +20,36 @@ class CompetitionService {
     fileprivate(set) var calendarService = CompetitionCalendarService()
         
     func updateHealthDataRecord(category: Competition.Category, score: Int) {
-            
+        
+        let restApi = SFRestAPI.sharedInstance()
+
+        var updatedCompetitions = dataStore.competitions.value
+    
+        for (index, competition) in updatedCompetitions.enumerated() {
+            var particpants = competition.participants
+            if competition.name == category.localizedName {
+                var maxScore = competition.participants
+                    .filter({ $0.person.name != restApi.user.fullName })
+                    .map({ $0.score })
+                    .sorted()
+                    .last ?? 1
+                maxScore = max(score, maxScore)
+                for (index, participant) in competition.participants.enumerated() {
+                    let updatedScore = participant.person.name == restApi.user.fullName ? score : participant.score
+                    particpants[index] = CompetitionParticipant(person: participant.person, score: updatedScore, rank: CGFloat(updatedScore)/CGFloat(maxScore))
+                }
+                updatedCompetitions[index] = Competition(name: competition.name, participants: particpants)
+            }
+        }
+        
+        if dataStore.competitions.value != updatedCompetitions {
+            dataStore.competitions.accept(updatedCompetitions)
+        }
+        
         // Get the current competition week number/year.
         let yearNumber = calendarService.yearNumber
         let weekOfYearNumber = calendarService.weekOfYearNumber
     
-        let restApi = SFRestAPI.sharedInstance()
         
         // Safely test if user logged in.
         let user: SFUserAccount? = restApi.user
@@ -51,7 +75,7 @@ class CompetitionService {
         }
     }
     
-    func fetchCompetitions() -> Observable<[Competition]> {
+    @discardableResult func fetchCompetitions() -> Observable<[Competition]> {
         
         // Get the current competition week number/year.
         let yearNumber = calendarService.yearNumber
@@ -99,6 +123,40 @@ class CompetitionService {
                 }
             }
             return Disposables.create()
+        }
+    }
+    
+    func fetchProfileImage(photoURL: URL, replyHandler: @escaping (UIImage) -> ()) {
+        
+        if let cachedImage = SimpleCache.shared.images[photoURL.absoluteString] {
+            replyHandler(cachedImage)
+            return
+        }
+        
+        let restApi = SFRestAPI.sharedInstance()
+        
+        let request = SFRestRequest(method: .GET,
+                                    path: photoURL.path,
+                                    queryParams: nil)
+        
+        request.baseURL = "https://\(photoURL.host!)"
+        request.endpoint = ""
+        
+        restApi.send(request, fail: { (error, _) in
+            DispatchQueue.main.async {
+                replyHandler(SFSDKResourceUtils.imageNamed("profile-placeholder"))
+            }
+        }) { (data, _) in
+            guard let imageData = data as? Data else {
+                return
+            }
+            DispatchQueue.main.async {
+                guard let image = UIImage(data: imageData, scale: UIScreen.main.scale) else {
+                    return
+                }
+                replyHandler(image)
+                SimpleCache.shared.images[photoURL.absoluteString] = image
+            }
         }
     }
     

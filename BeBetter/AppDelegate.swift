@@ -86,9 +86,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     // MARK: - App delegate lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        watchConnectivityServer.activate()
-        
+                
         let window = UIWindow(frame: UIScreen.main.bounds)
         
         Theme.shared
@@ -158,7 +156,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         let rootVC = CompetitionListView(with: CompetitionListViewModel())
         let navVC = BetterNavigationController(rootViewController: rootVC)
         window?.rootViewController = navVC
-        watchConnectivityServer.activate()
         healthMonitor.activate()
     }
     
