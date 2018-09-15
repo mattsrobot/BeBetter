@@ -1,9 +1,7 @@
 # BeBetter for iOS and watchOS
 ### Example of integration between Salesforce and Apple HealthKit
 
-<a href="https://travis-ci.org/mattsrobot/BeBetter">
-<img src="https://travis-ci.org/mattsrobot/BeBetter.svg">
-</a>
+[![Build Status](https://travis-ci.org/mattsrobot/BeBetter.svg?branch=master)](https://travis-ci.org/mattsrobot/BeBetter)
 
 ### How to build
 
