@@ -75,7 +75,7 @@ class CompetitionService {
         }
     }
     
-    @discardableResult func fetchCompetitions() -> Observable<[Competition]> {
+    @discardableResult func fetchCompetitions() -> Observable<Bool> {
         
         // Get the current competition week number/year.
         let yearNumber = calendarService.yearNumber
@@ -113,13 +113,17 @@ class CompetitionService {
                         // Map the JSON records to a competition array
                         let competitions = Competition.extract(records)
                         
+                        if self.dataStore.competitions.value != competitions {
+                            self.dataStore.competitions.accept(competitions)
+                        }
+                        
                         // Tell observers of the fetched friends
-                        observer.onNext(competitions)
+                        observer.onNext(true)
                     }
                     .catch { error in
                         SalesforceSwiftLogger.log(type(of:self), level:.debug, message:"Error: \(error)")
+                        observer.onNext(false)
                         observer.onError(error)
-                        observer.on(.completed)
                 }
             }
             return Disposables.create()

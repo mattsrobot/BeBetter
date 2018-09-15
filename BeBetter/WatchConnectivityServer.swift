@@ -60,11 +60,8 @@ class WatchConnectivityServer : NSObject {
         // Ask competition service for latest competitions
         competitionService
             .fetchCompetitions()
-            .subscribe { event in
-                // If we get some new competitions, update the datastore.
-                if case let .next(competitions) = event, self.dataStore.competitions.value != competitions {
-                    self.dataStore.competitions.accept(competitions)
-                }
+            .subscribe { _ in
+                // No need to do anything with the event
             }
             .disposed(by: disposeBag)
     }

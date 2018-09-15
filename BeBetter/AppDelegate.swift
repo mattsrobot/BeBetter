@@ -38,6 +38,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     
     fileprivate var watchConnectivityServer = WatchConnectivityServer()
     fileprivate var healthMonitor = HealthMonitor()
+    fileprivate var competitionService = CompetitionService()
     fileprivate var disposeBag = DisposeBag()
     
     override init() {

@@ -36,14 +36,8 @@ class CompetitionCardRow: UIView {
         titleLabelOrNil?.text = participant.person.name
         scoreLabelOrNil?.text = String(participant.score)
         
-        if participant.rank > 1 {
-            print("stupid error")
-        }
-        
-        var offset:CGFloat = participant.rank == 1 ? 0 : Constants.maxOffset * (1-participant.rank)
-        if offset < 0 {
-            offset = 0
-        }
+        let offset: CGFloat = participant.rank == 1 ? 0 : Constants.maxOffset * (1-participant.rank)
+
         rankBarTrailingConstraintOrNil?.constant = offset
         
         guard let imageView = imageViewOrNil, let photoURL = participant.person.photoURL else {

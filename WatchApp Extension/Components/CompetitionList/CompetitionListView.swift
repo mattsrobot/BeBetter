@@ -16,7 +16,7 @@ class CompetitionListView: WKInterfaceController {
     
     @IBOutlet var tableOrNil: WKInterfaceTable?
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     
     private(set) var viewModel = CompetitionListViewModel()
     
@@ -24,13 +24,15 @@ class CompetitionListView: WKInterfaceController {
         super.awake(withContext: context)
         
         viewModel
-            .fetchCompetitions()
+            .competitions()
             .subscribe { event in
                 if case let .next(competitions) = event {
                     self.display(competitions)
                 }
             }
             .disposed(by: disposeBag)
+        
+        viewModel.fetchCompetitions()
     }
     
     private func display(_ competitions: [Competition]) {

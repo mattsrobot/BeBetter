@@ -68,11 +68,6 @@ class WatchConnectivityClient : NSObject {
         let session = WCSession.default
         
         if session.isReachable {
-            
-            session.sendMessage(["instruction" : "fetchProfileImage",
-                                 "value" : profileURL],
-                                replyHandler: nil)
-            
             session.sendMessage(["instruction" : "fetchProfileImage", "value" : profileURL], replyHandler: { reply in
                 if let imageData = reply["value"] as? Data, let image = UIImage(data: imageData) {
                     SimpleCache.shared.images[profileURL] = image

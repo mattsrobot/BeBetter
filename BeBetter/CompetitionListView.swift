@@ -25,6 +25,8 @@ class CompetitionListView: UIViewController {
     
     fileprivate var disposeBag = DisposeBag()
     
+    @IBOutlet weak var activityIndicatorOrNil: UIActivityIndicatorView?
+    
     @IBOutlet weak var tableViewOrNil: UITableView? {
         didSet {
             let friendsTableViewCellNib = UINib.init(nibName: Identifiers.cardList, bundle: .main)
@@ -48,7 +50,7 @@ class CompetitionListView: UIViewController {
     
     fileprivate func bind(to viewModel: CompetitionListViewModel) {
         
-        guard let tableView = tableViewOrNil else {
+        guard let tableView = tableViewOrNil, let activityIndicator = activityIndicatorOrNil else {
             return
         }
         
@@ -56,11 +58,21 @@ class CompetitionListView: UIViewController {
             .bind(to: navigationItem.rx.title)
             .disposed(by: disposeBag)
         
-        viewModel.fetchCompetitions()
+        viewModel
+            .isRefreshing
+            .bind(to: activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        viewModel.competitions()
             .bind(to: tableView.rx.items(cellIdentifier: Identifiers.cardList)) { (index, competition: Competition, cell: CompetitionCardCell) in
                 cell.display(competition, for: self.theme)
             }
             .disposed(by: disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.fetchCompetitions()
     }
     
     fileprivate func apply(_ theme: Theme) {
