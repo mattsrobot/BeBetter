@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode9.2
+xcode_workspace: BeBetter.xcworkspace
+xcode_scheme: BeBetter
+script: xcodebuild -workspace BeBetter.xcworkspace -scheme Fermentor -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.2' -sdk iphonesimulator -configuration Debug build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
