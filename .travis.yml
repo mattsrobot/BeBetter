@@ -7,8 +7,6 @@ xcode_workspace: BeBetter.xcworkspace
 xcode_scheme: BeBetter
 
 env:
-  - RUNTIME="iOS 9.0"  DEVICE="iPhone 4s"
-  - RUNTIME="iOS 9.3"  DEVICE="iPhone 6s"
   - RUNTIME="iOS 10.0" DEVICE="iPhone SE"
   - RUNTIME="iOS 10.3" DEVICE="iPhone 7 Plus"
   - RUNTIME="iOS 11.0" DEVICE="iPhone X"
