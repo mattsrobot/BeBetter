@@ -160,6 +160,7 @@
 		DE369B43213AEA8D00AE9381 /* CompetitionCardRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompetitionCardRow.xib; sourceTree = "<group>"; };
 		DE369B45213AED3100AE9381 /* Competition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Competition.swift; sourceTree = "<group>"; };
 		DE369B48213AEDB100AE9381 /* CompetitionParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionParticipant.swift; sourceTree = "<group>"; };
+		DE421613214D80E200B49195 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DE77695F2126E21F00D02A3C /* HealthMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMonitor.swift; sourceTree = "<group>"; };
 		DE7769612126E31C00D02A3C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DE7BEEB42128562900F11D16 /* Datastore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastore.swift; sourceTree = "<group>"; };
@@ -211,6 +212,7 @@
 		4FD6C46B1B754AF1002F9F90 = {
 			isa = PBXGroup;
 			children = (
+				DE421613214D80E200B49195 /* README.md */,
 				4FD6C4761B754AF1002F9F90 /* BeBetter */,
 				DE3639362121B57C00634BCC /* BeBetterTests */,
 				DE3639512121C60000634BCC /* WatchApp */,
