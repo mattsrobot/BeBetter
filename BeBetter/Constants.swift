@@ -9,7 +9,7 @@
 import UIKit
 
 enum Secrets {
-    static let remoteAccessConsumerKey = "3MVG9fTLmJ60pJ5IhfNYyIyo783baljqJytKsewb1gjhN9i.YfI0yNISwpiTuM63dds267dC3GSSzpug2MS.e"
+    static let remoteAccessConsumerKey = ""
     static let OAuthRedirectURI        = "testsfdc:///mobilesdk/detect/oauth/done"
 }
 
