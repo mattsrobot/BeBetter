@@ -27,6 +27,10 @@ struct Competition {
         case distance
         case energy
         
+        static var all : [Category] {
+            return [.steps, .distance, .energy]
+        }
+        
         /// The field used to store data in Salesforce
         var soqlField : String {
             switch self {

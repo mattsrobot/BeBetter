@@ -81,8 +81,11 @@ class CompetitionService {
         let yearNumber = calendarService.yearNumber
         let weekOfYearNumber = calendarService.weekOfYearNumber
         
+        /// Get the list of supported competition fields
+        let competitionFields = Competition.Category.all.map({ $0.soqlField }).joined(separator: ",")
+        
         // Fetch the latest health data and friend list for the current competition.
-        let soqlQuery = "SELECT Distance__c, User__c, User__r.Name, User__r.FullPhotoURL, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
+        let soqlQuery = "SELECT \(competitionFields), User__c, User__r.Name, User__r.FullPhotoURL, id FROM Competition__c WHERE Calendar_Year__c = \(yearNumber) AND Calendar_Week__c = \(weekOfYearNumber)"
 
         // Return an observable to async report the fetched Friends from Salesforce.
         return Observable.create { observer in
